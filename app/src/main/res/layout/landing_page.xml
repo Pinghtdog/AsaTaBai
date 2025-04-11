@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:gravity="center_horizontal"
+    style="@style/SCREEN">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="@font/krona"
+        android:paddingLeft="35dp"
+        android:paddingTop="75dp"
+        android:paddingBottom="0dp"
+        android:text="Welcome User!"
+        android:textColor="@color/black"
+        android:textSize="45dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="459dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="199dp"
+            android:layout_gravity="center"
+            android:layout_height="178dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/jeep"
+            android:src="@drawable/jeep"/>
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="283dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/greybtn"
+            android:fontFamily="@font/krona"
+            android:text="Jeepney Codes"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="283dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="280dp"
+            android:background="@drawable/greybtn"
+            android:fontFamily="@font/krona"
+            android:text="Destinations"
+            android:textColor="@color/black" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/h" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/a" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/m" />
+
+        <Button
+            android:id="@+id/accountsbtn"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="36dp"
+            android:background="@drawable/account" />
+    </LinearLayout>
+
+
+</LinearLayout>

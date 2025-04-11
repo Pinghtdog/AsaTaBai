@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AsaTaBai</string>
+    <string name="about_the_developers">About the Developers</string>
+    <string name="settings">Settings</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="language">Language</string>
+    <string name="jeep">jeep</string>
+    <string name="asa_ta_bai">Asa Ta Bai?</string>
+    <string name="username">Username</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="about_the_developers2">About the Developers</string>
+
+    <string name="language_english">English</string>
+    <string name="language_filipino">Filipino</string>
+    <string name="language_cebuano">Cebuano</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>

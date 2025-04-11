@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    android:gravity="center_horizontal">
+    <!-- Logo at the top -->
+
+    <!-- Username EditText -->
+
+
+    <ImageView
+        android:layout_width="199dp"
+        android:layout_height="178dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/jeep"
+        android:src="@drawable/jeep"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/krona"
+        android:text="@string/asa_ta_bai"
+        android:textColor="@color/black"
+        android:textSize="32sp"/>
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:fontFamily="@font/krona"
+        android:hint="@string/username"
+        android:padding="13dp"
+        android:layout_marginBottom="16dp"
+        android:inputType="text"/>
+
+    <!-- Password EditText -->
+
+    <!-- Sign In Button -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:fontFamily="@font/krona"
+        android:layout_marginBottom="32dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        />
+
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in"
+        android:fontFamily="@font/krona"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_button"
+        />
+
+
+    <!-- Sign Up Link -->
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:text="@string/don_t_have_an_account_sign_up"
+        android:textSize="14sp"
+        android:textColor="#0000FF"
+        android:layout_gravity="center"
+        android:clickable="true" />
+
+</LinearLayout>
