@@ -1,4 +1,4 @@
-package com.example.asatabai
+package com.android.asatabai
 
 import android.app.Activity
 import android.app.AlertDialog

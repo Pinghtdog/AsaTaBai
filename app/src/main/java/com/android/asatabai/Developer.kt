@@ -1,4 +1,4 @@
-package com.example.asatabai
+package com.android.asatabai
 
 data class Developer(
     val name: String,

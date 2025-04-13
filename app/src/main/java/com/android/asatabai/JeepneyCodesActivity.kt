@@ -1,4 +1,4 @@
-package com.example.asatabai
+package com.android.asatabai
 
 
 import android.app.Activity
@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import com.example.asatabai.data.JeepneyRoutesData
+import com.android.asatabai.data.JeepneyRoutesData
 
 class JeepneyCodesActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

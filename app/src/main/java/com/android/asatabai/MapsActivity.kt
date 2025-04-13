@@ -1,4 +1,4 @@
-package com.example.asatabai
+package com.android.asatabai
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity

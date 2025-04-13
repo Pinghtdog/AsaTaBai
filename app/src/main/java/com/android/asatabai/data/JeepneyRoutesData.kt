@@ -1,4 +1,4 @@
-package com.example.asatabai.data
+package com.android.asatabai.data
 
 import com.google.android.gms.maps.model.LatLng
 import java.io.BufferedReader

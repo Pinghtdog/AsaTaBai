@@ -1,12 +1,10 @@
-package com.example.asatabai
+package com.android.asatabai
 
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 
 class LandingPageActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

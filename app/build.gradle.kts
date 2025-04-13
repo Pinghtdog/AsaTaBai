@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.asatabai"
+    namespace = "com.android.asatabai"
     compileSdk = 35
 
     defaultConfig {

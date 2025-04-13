@@ -1,4 +1,4 @@
-package com.example.asatabai
+package com.android.asatabai
 
 
 import android.app.Activity
@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.asatabai.data.JeepneyRoutesData
+import com.android.asatabai.data.JeepneyRoutesData
 
 class LoginActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
