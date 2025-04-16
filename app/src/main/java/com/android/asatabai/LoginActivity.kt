@@ -9,6 +9,13 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.android.asatabai.data.JeepneyRoutesData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 
 class LoginActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +41,55 @@ class LoginActivity : Activity() {
         }
         val btn_login = findViewById<Button>(R.id.btnSignIn)
         btn_login.setOnClickListener {
-            val intent = Intent(this, LandingPageActivity :: class.java)
-            startActivity(intent)
+            val name = et_name.text.toString()
+            val password = et_password.text.toString()
+            if(name.isNotEmpty() && password.isNotEmpty()){
+                doLogin(this, name, password)
+            } else{
+                Toast.makeText(this, "Username or password cannot be empty", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun doLogin(loginActivity: LoginActivity, name: String, password: String) {
+        CoroutineScope(Dispatchers.IO).launch{
+            val client = OkHttpClient()
+            val mediaType = "application/json".toMediaType()
+            val body = RequestBody.create(
+                mediaType,
+                """{
+                    "username": "$name",
+                    "password": "$password"
+                }""".trimIndent()
+            )
+
+            val request = okhttp3.Request.Builder()
+                .url("https://exultant-mature-dibble.glitch.me/login")
+                .post(body)
+                .addHeader("Content-Type", "application/json")
+                .build()
+
+            try {
+                val response = client.newCall(request).execute()
+                if (response.isSuccessful) {
+                    Log.e("Response Successful", "${response.body?.toString()}")
+                    val intent = Intent(loginActivity, LandingPageActivity :: class.java).apply {
+                        putExtra("name", name)
+                        putExtra("password", password)
+                    }
+                    startActivity(intent)
+                }else{
+                    withContext(Dispatchers.Main) {
+                        Log.e("Response Failed", "Failed: ${response.code} - ${response.message}")
+                        Toast.makeText(loginActivity, "Login failed", Toast.LENGTH_LONG).show()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Log.e("Response Failed", "Error: ${e.message}")
+                    Toast.makeText(loginActivity, "Unable to complete the request this time!", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 }

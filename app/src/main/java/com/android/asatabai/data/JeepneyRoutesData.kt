@@ -300,7 +300,7 @@ object JeepneyRoutesData {
                     if (parts.size >= 2) {
                         val lat = parts[1].toDoubleOrNull()
                         val lng = parts[0].toDoubleOrNull()
-                        println("$lat, $lng")
+                        //println("$lat, $lng")
                         if (lat != null && lng != null) {
                             latLngList.add(LatLng(lat, lng))
                         } else {

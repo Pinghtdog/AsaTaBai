@@ -45,18 +45,19 @@
         android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/krona"
-        android:hint="Name"
+        android:hint="Username"
         android:textColorHint="@color/black"
-        android:padding="12dp" />
+        android:inputType="text"
+        android:padding="12dp"/>
 
     <!-- Password EditText -->
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/krona"
         android:hint="Password"
         android:inputType="textPassword"
@@ -67,10 +68,41 @@
         android:id="@+id/editTextConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/krona"
         android:hint="Confirm Password"
         android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColorHint="@color/black"/>
+
+    <EditText
+        android:id="@+id/editTextFirstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/krona"
+        android:hint="First Name"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColorHint="@color/black"/>
+    <EditText
+        android:id="@+id/editTextMiddleName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/krona"
+        android:hint="Middle Name"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColorHint="@color/black"/>
+    <EditText
+        android:id="@+id/editTextLastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/krona"
+        android:hint="Last Name"
+        android:inputType="text"
         android:padding="12dp"
         android:textColorHint="@color/black"/>
     <!-- Sign In Button -->
