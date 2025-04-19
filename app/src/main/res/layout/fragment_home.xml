@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.20">
+
+        </androidx.constraintlayout.widget.Guideline>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="1.6">
+
+        </androidx.constraintlayout.widget.Guideline>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/twenty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".2"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/eighty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".8"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/fourty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".6"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/sizty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".4"/>
+
+
+        <TextView
+            android:id="@+id/textmessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/krona"
+            android:paddingLeft="35dp"
+            android:paddingTop="75dp"
+            android:paddingBottom="0dp"
+            android:text="Welcome User!"
+            android:textColor="@color/black"
+            android:textSize="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="199dp"
+            android:layout_height="178dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/jeep"
+            android:src="@drawable/jeep"
+            app:layout_constraintEnd_toStartOf="@+id/eighty"
+            app:layout_constraintStart_toStartOf="@+id/twenty"
+            app:layout_constraintTop_toBottomOf="@+id/textmessage" />
+
+
+        <Button
+            android:id="@+id/btnJeepneyCodes"
+            android:layout_width="283dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/greybtn"
+            android:fontFamily="@font/krona"
+            android:text="Jeepney Codes"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/eighty"
+            app:layout_constraintStart_toStartOf="@+id/twenty"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <Button
+            android:id="@+id/btnDestinations"
+            android:layout_width="283dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/greybtn"
+            android:fontFamily="@font/krona"
+            android:text="Destinations"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/eighty"
+            app:layout_constraintStart_toStartOf="@+id/twenty"
+            app:layout_constraintTop_toBottomOf="@+id/btnJeepneyCodes" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

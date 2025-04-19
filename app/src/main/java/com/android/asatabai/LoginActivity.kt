@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.android.asatabai.data.JeepneyRoutesData
+import com.android.asatabai.data.JeepneyRoutes.JeepneyRoutesData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,14 +44,29 @@ class LoginActivity : Activity() {
             val name = et_name.text.toString()
             val password = et_password.text.toString()
             if(name.isNotEmpty() && password.isNotEmpty()){
-                doLogin(this, name, password)
+//                doLogin(this, name, password)
+                debugLogin(this)
             } else{
                 Toast.makeText(this, "Username or password cannot be empty", Toast.LENGTH_LONG).show()
             }
         }
     }
 
+    private fun debugLogin(loginActivity: LoginActivity) {
+        val intent = Intent(loginActivity, LandingPageActivity :: class.java).apply {
+            putExtra("name", "admin")
+            putExtra("password", "admin")
+        }
+        startActivity(intent)
+    }
+
     private fun doLogin(loginActivity: LoginActivity, name: String, password: String) {
+
+        val intent = Intent(loginActivity, LandingPageActivity :: class.java).apply {
+            putExtra("name", name)
+            putExtra("password", password)
+        }
+        startActivity(intent)
         CoroutineScope(Dispatchers.IO).launch{
             val client = OkHttpClient()
             val mediaType = "application/json".toMediaType()

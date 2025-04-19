@@ -1,4 +1,4 @@
-package com.android.asatabai.data
+package com.android.asatabai.data.JeepneyRoutes
 
 import com.google.android.gms.maps.model.LatLng
 import java.io.BufferedReader

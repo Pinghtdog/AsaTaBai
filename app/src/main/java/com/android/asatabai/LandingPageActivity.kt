@@ -5,41 +5,51 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.android.asatabai.fragments.AccountsFragment
+import com.android.asatabai.fragments.HomeFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.TextView
 
-class LandingPageActivity : Activity() {
+class LandingPageActivity : AppCompatActivity() {
+    private lateinit var bottomNavView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.landing_page)
-        handleJeepneyCodes();
-        handleAccounts()
+        setContentView(R.layout.landing)
+
+        val username = intent.getStringExtra("name")
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    R.id.frame,
+                    HomeFragment()
+                ) // Use replace and specify the container ID
+                .commit()
+        }
+
+        bottomNavView = findViewById(R.id.bottomNavigationView)
+        bottomNavView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navbarHome -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+
+                R.id.navbarProfile -> {
+                    replaceFragment(AccountsFragment())
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 
-    private fun handleJeepneyCodes(){
-        val btnJeepney = findViewById<Button>(R.id.button7)
-        btnJeepney.setOnClickListener{
-            startActivity(Intent(this,JeepneyCodesActivity::class.java))
-        }
-    }
-    private fun handleAccounts(){
-        val btnAccounts = findViewById<Button>(R.id.accountsbtn)
-        val textMessage = findViewById<TextView>(R.id.textMessage)
-        var username = ""
-        var password = ""
-        intent?.getStringExtra("name")?.let { name ->
-            textMessage.text = "Welcome back $name!"
-            username = name
-        }
-        intent?.getStringExtra("password")?.let { pw ->
-            password = pw
-        }
-        btnAccounts.setOnClickListener {
-            val intent = Intent(this, AccountsPageActivity::class.java).apply {
-                putExtra("name", username)
-                putExtra("password", password)
-            }
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-        }
+    private  fun replaceFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()
     }
 }

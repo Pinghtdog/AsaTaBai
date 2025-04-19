@@ -18,7 +18,7 @@ class AccountsPageActivity : Activity() {
     lateinit var firstnameTextView: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_accounts_page)
+        setContentView(R.layout.fragment_accounts)
 
         firstnameTextView = findViewById(R.id.textView)
 
