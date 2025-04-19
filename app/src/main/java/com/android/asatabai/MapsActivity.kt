@@ -53,11 +53,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback ,GoogleMap.OnMarker
 
     private val cebuCityHall = LatLng(10.2928, 123.9021)
 
-    private val cebuAreaBounds = LatLngBounds(
-        LatLng(10.20, 123.65),  // Southwest corner (includes Toledo)
-        LatLng(10.55, 124.00)   // Northeast corner (includes Lapu-Lapu, Cordova, Danao)
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)

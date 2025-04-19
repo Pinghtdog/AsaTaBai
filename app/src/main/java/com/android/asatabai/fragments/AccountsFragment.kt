@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog // Use androidx.appcompat.app.AlertDialog for consistency with AppCompatActivity
 import androidx.fragment.app.Fragment // Import Fragment
-import com.android.asatabai.AccountsPageActivity
 import com.android.asatabai.DevelopersActivity
 import com.android.asatabai.LoginActivity
 import com.android.asatabai.R

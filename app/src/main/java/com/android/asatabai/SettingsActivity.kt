@@ -13,7 +13,7 @@ class SettingsActivity : Activity() {
         setContentView(R.layout.settings)
 
         handleNightMode()
-        handleEditProfile();
+//        handleEditProfile();
         handleLanguage()
         handleNotifications()
         handleAboutDevelopers()
@@ -62,13 +62,13 @@ class SettingsActivity : Activity() {
                 .show()
         }
     }
-    private fun handleEditProfile() {
-        val btnEditProfile = findViewById<Button>(R.id.editProfile)
-        btnEditProfile.setOnClickListener {
-            val intent = Intent(this, AccountsPageActivity :: class.java)
-            startActivity(intent)
-        }
-    }
+//    private fun handleEditProfile() {
+//        val btnEditProfile = findViewById<Button>(R.id.editProfile)
+//        btnEditProfile.setOnClickListener {
+//            val intent = Intent(this, AccountsPageActivity :: class.java)
+//            startActivity(intent)
+//        }
+//    }
 
     private fun handleLogout(){
         val btnLogOut = findViewById<Button>(R.id.logout)
