@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.play.services.maps.v1920)
 //    implementation(libs.places)
     implementation(libs.okhttp)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

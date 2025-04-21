@@ -13,7 +13,7 @@ import com.android.asatabai.fragments.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.TextView
 
-class LandingPageActivity : AppCompatActivity() {
+class LandingPageActivity : BaseActivity() {
     private lateinit var bottomNavView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +47,7 @@ class LandingPageActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
     }
 
     private  fun replaceFragment(fragment: Fragment){

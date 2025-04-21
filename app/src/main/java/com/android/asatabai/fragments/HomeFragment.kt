@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.android.asatabai.JeepneyCodesActivity
 import com.android.asatabai.R
 
 class HomeFragment : Fragment() {
@@ -43,8 +42,14 @@ class HomeFragment : Fragment() {
     private fun setupJeepneyCodesButton(button: Button) {
         button.setOnClickListener {
             // Navigate to Jeepney Codes screen
-            val intent = Intent(requireContext(), JeepneyCodesActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(requireContext(), JeepneyCodesActivity::class.java)
+//            startActivity(intent)
+            button.setOnClickListener {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.frame, JeepneyCodesFragment())  // Replace the activity's container
+                    .addToBackStack(null)
+                    .commit()
+            }
         }
     }
 

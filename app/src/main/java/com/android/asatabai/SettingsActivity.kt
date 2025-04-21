@@ -1,19 +1,21 @@
 package com.android.asatabai
 
-
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.app.AlertDialog
+import androidx.appcompat.widget.SwitchCompat
 
-class SettingsActivity : Activity() {
+class SettingsActivity : BaseActivity(){
+
+    private lateinit var switcher: SwitchCompat
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings)
-
+        supportActionBar?.hide()
         handleNightMode()
-//        handleEditProfile();
+        handleEditProfile();
         handleLanguage()
         handleNotifications()
         handleAboutDevelopers()
@@ -21,6 +23,14 @@ class SettingsActivity : Activity() {
         handleLogout()
         handleContact()
         handleFAQ()
+        handleHome()
+    }
+
+    private fun handleHome() {
+        val button = findViewById<Button>(R.id.home)
+        button.setOnClickListener {
+            startActivity(Intent(this, LandingPageActivity::class.java))
+        }
     }
 
     private fun handleFAQ() {
@@ -62,13 +72,13 @@ class SettingsActivity : Activity() {
                 .show()
         }
     }
-//    private fun handleEditProfile() {
+    private fun handleEditProfile() {
 //        val btnEditProfile = findViewById<Button>(R.id.editProfile)
 //        btnEditProfile.setOnClickListener {
 //            val intent = Intent(this, AccountsPageActivity :: class.java)
 //            startActivity(intent)
 //        }
-//    }
+    }
 
     private fun handleLogout(){
         val btnLogOut = findViewById<Button>(R.id.logout)
@@ -89,7 +99,11 @@ class SettingsActivity : Activity() {
     }
 
     private fun handleNightMode() {
-
+        switcher = findViewById(R.id.night_mode_switch)
+        switcher.isChecked = nightMode
+        switcher.setOnCheckedChangeListener { _, isChecked ->
+            toggleNightMode(isChecked)
+        }
     }
 
     private fun handleLanguage() {

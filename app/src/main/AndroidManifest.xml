@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".data.AppData"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -34,20 +35,10 @@
             android:value="AIzaSyC8l6LTBPiXaRV7vmlbP4BF4PMaNoBjPWE" />
 
         <activity
-            android:name=".MapsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_maps" />
-        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".JeepneyCodesActivity"
-            android:exported="false" />
-        <activity
             android:name=".DevelopersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AccountsPageActivity"
             android:exported="false" />
         <activity
             android:name=".LandingPageActivity"
