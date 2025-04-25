@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
 
-class DevelopersActivity : Activity() {
+class DevelopersActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.developers)

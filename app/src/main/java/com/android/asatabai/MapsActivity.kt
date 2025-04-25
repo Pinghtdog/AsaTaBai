@@ -30,7 +30,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import com.google.android.gms.maps.model.*
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClickListener, SensorEventListener {
+class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClickListener, SensorEventListener {
 
     private lateinit var map: GoogleMap
     private lateinit var routeStops: List<LatLng>

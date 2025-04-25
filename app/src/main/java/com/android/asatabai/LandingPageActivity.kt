@@ -1,19 +1,15 @@
 package com.android.asatabai
 
-
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.android.asatabai.fragments.AccountsFragment
 import com.android.asatabai.fragments.HomeFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.widget.TextView
+import com.android.asatabai.fragments.MapFragment
 
-class LandingPageActivity : AppCompatActivity() {
+import com.android.asatabai.fragments.RecentsFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
+class LandingPageActivity : BaseActivity() {
     private lateinit var bottomNavView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +39,14 @@ class LandingPageActivity : AppCompatActivity() {
                     replaceFragment(AccountsFragment())
                     true
                 }
-
+                R.id.navbarSearch -> {
+                    replaceFragment(RecentsFragment())
+                    true
+                }
+                R.id.navbarMap -> {
+                    replaceFragment(MapFragment())
+                    true
+                }
                 else -> false
             }
         }

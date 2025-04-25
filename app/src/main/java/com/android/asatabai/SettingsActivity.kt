@@ -1,21 +1,32 @@
 package com.android.asatabai
 
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.app.AlertDialog
+import android.content.SharedPreferences
+import android.view.View
+import android.widget.Switch
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import com.google.firebase.auth.FirebaseAuth
 
-class SettingsActivity : Activity() {
+class SettingsActivity : BaseActivity(){
+
+    private lateinit var switcher: Switch
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings)
+        supportActionBar?.hide()
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
 
         handleNightMode()
-//        handleEditProfile();
         handleLanguage()
-        handleNotifications()
         handleAboutDevelopers()
         handleAboutTheApp()
         handleLogout()
@@ -62,13 +73,6 @@ class SettingsActivity : Activity() {
                 .show()
         }
     }
-//    private fun handleEditProfile() {
-//        val btnEditProfile = findViewById<Button>(R.id.editProfile)
-//        btnEditProfile.setOnClickListener {
-//            val intent = Intent(this, AccountsPageActivity :: class.java)
-//            startActivity(intent)
-//        }
-//    }
 
     private fun handleLogout(){
         val btnLogOut = findViewById<Button>(R.id.logout)
@@ -77,6 +81,9 @@ class SettingsActivity : Activity() {
                 .setTitle("Logout")
                 .setMessage("Are you sure you want to log out?")
                 .setPositiveButton("Yes") { _, _ ->
+                    // Sign out from Firebase
+                    auth.signOut()
+
                     // Navigate to the Sign-in screen
                     val intent = Intent(this, LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -89,14 +96,15 @@ class SettingsActivity : Activity() {
     }
 
     private fun handleNightMode() {
+        switcher = findViewById(R.id.night_mode_switch)
+        switcher.isChecked = nightMode
 
+        switcher.setOnCheckedChangeListener { _, isChecked ->
+            toggleNightMode(isChecked)
+        }
     }
 
     private fun handleLanguage() {
-
-    }
-
-    private fun handleNotifications() {
 
     }
 
