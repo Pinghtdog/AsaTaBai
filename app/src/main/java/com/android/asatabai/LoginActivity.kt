@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.android.asatabai.data.AppData
 import com.android.asatabai.data.JeepneyRoutes.JeepneyRoutesData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,7 +31,7 @@ class LoginActivity : BaseActivity() {
         val text_regis = findViewById<TextView>(R.id.signup)
 
         intent?.let {
-            it.getStringExtra("name")?.let { name -> et_name.setText(name) }
+            it.getStringExtra("email")?.let { email -> et_name.setText(email) }
             it.getStringExtra("password")?.let { password -> et_password.setText(password) }
         }
 
@@ -61,9 +62,19 @@ class LoginActivity : BaseActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // User is signed in, proceed to LandingPageActivity
-                    Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, LandingPageActivity::class.java))
+                    val uid = auth.currentUser?.uid
+                    val firestore = FirebaseFirestore.getInstance()
+
+                    if (uid != null) {
+                        firestore.collection("users").document(uid).get()
+                            .addOnSuccessListener { document ->
+                                val username = document.getString("username") ?: "User"
+                                (application as AppData).username = username
+                                (application as AppData).email = email
+                                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, LandingPageActivity::class.java))
+                            }
+                    }
                 } else {
                     Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
                 }

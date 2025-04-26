@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.android.asatabai.JeepneyCodesActivity
 import com.android.asatabai.LoginActivity
 import com.android.asatabai.R
+import com.android.asatabai.data.AppData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -40,9 +41,6 @@ class HomeFragment : Fragment() {
         val btnDestinations = view.findViewById<Button>(R.id.btnDestinations)
         val textMessage = view.findViewById<TextView>(R.id.textmessage)
 
-        // Optional: Retrieve username passed via arguments
-        val username = arguments?.getString("username")
-
         // Display welcome message using authenticated user
         displayWelcomeMessage(textMessage)
 
@@ -52,33 +50,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun displayWelcomeMessage(tvWelcome: TextView) {
-        val currentUser = auth.currentUser
-
-        if (currentUser != null) {
-            firestore.collection("users")
-                .document(currentUser.uid)
-                .get()
-                .addOnSuccessListener { document ->
-                    if (document.exists()) {
-                        val userUsername = document.getString("username") ?: "User"
-                        tvWelcome.text = "Welcome back,\n$userUsername!"
-
-                        val email = document.getString("email")
-                        Log.d("UserData", "Email: $email")
-                    } else {
-                        tvWelcome.text = "Welcome!"
-                        Log.w("Firestore", "No such document")
-                    }
-                }
-                .addOnFailureListener { e ->
-                    tvWelcome.text = "Welcome!"
-                    Log.w("Firestore", "Error getting document", e)
-                }
-        } else {
-            // User not logged in, go to LoginActivity and finish current activity
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-            requireActivity().finish()
-        }
+        val username = (requireActivity().application as AppData).username
+        tvWelcome.text = "Welcome, $username!"
     }
 
     private fun setupJeepneyCodesButton(button: Button) {

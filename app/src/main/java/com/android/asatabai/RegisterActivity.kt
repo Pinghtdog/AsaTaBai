@@ -54,7 +54,7 @@ class RegisterActivity : BaseActivity() {
                                     .addOnSuccessListener {
                                         Toast.makeText(this, "Sign up successful", Toast.LENGTH_SHORT).show()
                                         startActivity(Intent(this, LoginActivity::class.java).apply {
-                                            putExtra("name", username)
+                                            putExtra("name", email)
                                             putExtra("password", "")  // Don't pass password
                                         })
                                     }
