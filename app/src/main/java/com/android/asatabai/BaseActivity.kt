@@ -4,9 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.SharedPreferences
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import com.android.asatabai.data.AppData
+import com.android.asatabai.utils.LocaleHelper
 
 open class BaseActivity : AppCompatActivity() {
     protected lateinit var sharedPreferences: SharedPreferences
@@ -21,6 +21,10 @@ open class BaseActivity : AppCompatActivity() {
     protected fun applyNightMode() {
 
         sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE)
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase))
     }
 
     protected fun toggleNightMode(newState: Boolean) {

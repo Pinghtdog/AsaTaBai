@@ -17,16 +17,16 @@
         android:layout_marginTop="40dp"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/krona"
-        android:text="Jeepney Codes"
+        android:text="@string/jeepney_codes"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <ListView
-        android:id="@+id/listViewJeepneyCodes"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerRecentRoutes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:dividerHeight="2dp"
-        android:background="@android:color/white"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="8dp" />
 </LinearLayout>

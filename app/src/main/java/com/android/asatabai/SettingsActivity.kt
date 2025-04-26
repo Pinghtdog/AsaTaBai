@@ -5,17 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.app.AlertDialog
-import android.content.SharedPreferences
-import android.view.View
 import android.widget.Switch
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import com.android.asatabai.utils.LocaleHelper
 import com.google.firebase.auth.FirebaseAuth
+import java.util.Locale
 
-class SettingsActivity : BaseActivity(){
+class SettingsActivity : BaseActivity() {
 
     private lateinit var switcher: Switch
     private lateinit var auth: FirebaseAuth
+    private lateinit var languageSpinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +47,7 @@ class SettingsActivity : BaseActivity(){
                         "2. Is this app free?\n" +
                         "- Yes, this app is completely free to use.\n\n" +
                         "3. How often are the codes updated?\n" +
-                        "- We update the codes regularly to reflect any changes in Cebu’s jeepney system.")
+                        "- We update the codes regularly to reflect any changes in Cebu's jeepney system.")
                 .setPositiveButton("Ok", null)
                 .show()
         }
@@ -63,7 +64,7 @@ class SettingsActivity : BaseActivity(){
         }
     }
 
-    private fun handleAboutTheApp(){
+    private fun handleAboutTheApp() {
         val btnApp = findViewById<Button>(R.id.btnApp)
         btnApp.setOnClickListener {
             AlertDialog.Builder(this)
@@ -74,7 +75,7 @@ class SettingsActivity : BaseActivity(){
         }
     }
 
-    private fun handleLogout(){
+    private fun handleLogout() {
         val btnLogOut = findViewById<Button>(R.id.logout)
         btnLogOut.setOnClickListener {
             AlertDialog.Builder(this)
@@ -105,13 +106,45 @@ class SettingsActivity : BaseActivity(){
     }
 
     private fun handleLanguage() {
+        languageSpinner = findViewById(R.id.language_spinner)
 
+        // Create array of language options
+        val languages = arrayOf("English", "Filipino", "Cebuano")
+        val languageCodes = arrayOf("en", "fil", "ceb") // Corresponding language codes
+
+        // Create adapter for spinner
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, languages)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        languageSpinner.adapter = adapter
+
+        // Set current language selection
+        val currentLang = LocaleHelper.getPersistedData(this, Locale.getDefault().language)
+        val position = when(currentLang) {
+            "fil" -> 1
+            "ceb" -> 2
+            else -> 0 // Default to English
+        }
+        languageSpinner.setSelection(position)
+
+        // Handle language selection
+        languageSpinner.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
+                val selectedLanguageCode = languageCodes[position]
+                if (selectedLanguageCode != currentLang) {
+                    // Apply the new language and recreate activity
+                    LocaleHelper.setLocale(this@SettingsActivity, selectedLanguageCode)
+                    recreate()
+                }
+            }
+
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+        }
     }
 
     private fun handleAboutDevelopers() {
         val btn_login = findViewById<Button>(R.id.developer)
         btn_login.setOnClickListener {
-            val intent = Intent(this, DevelopersActivity :: class.java)
+            val intent = Intent(this, DevelopersActivity::class.java)
             startActivity(intent)
         }
     }

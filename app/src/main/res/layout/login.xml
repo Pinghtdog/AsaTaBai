@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/krona"
-        android:text="@string/asa_ta_bai"
+        android:text="Asa Ta Bai?"
         android:textColor="@color/black"
         android:textSize="32sp"/>
 
@@ -50,7 +50,7 @@
         android:layout_marginBottom="32dp"
         android:autofillHints=""
         android:fontFamily="@font/krona"
-        android:hint="@string/password"
+        android:hint="Password"
         android:inputType="textPassword"
         android:padding="12dp" />
 
@@ -61,7 +61,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/krona"
-        android:text="@string/sign_in"
+        android:text="Sign In"
         android:textSize="16sp" />
 
 
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:text="@string/don_t_have_an_account_sign_up"
+        android:text="Don't have an account? Sign Up"
         android:textSize="14sp"
         android:textColor="#0000FF"
         android:layout_gravity="center"

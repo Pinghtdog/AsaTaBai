@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">AsaTaBai</string>
+    <string name="about_the_developers">Tungkol sa mga Developer</string>
+    <string name="settings">Mga Setting</string>
+    <string name="night_mode">Gabi na Mode</string>
+    <string name="language">Wika</string>
+    <string name="jeep">dyip</string>
+    <string name="asa_ta_bai">Saan Tayo, Bai?</string>
+    <string name="username">Pangalan ng Gumagamit</string>
+    <string name="don_t_have_an_account_sign_up">Wala ka pang account? Mag-Sign Up</string>
+    <string name="sign_in">Mag-Sign In</string>
+    <string name="password">Password</string>
+    <string name="about_the_developers2">Tungkol sa mga Developer</string>
+
+    <string name="language_english">Ingles</string>
+    <string name="language_filipino">Filipino</string>
+    <string name="language_cebuano">Cebuano</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_web_client_id">656047469522-8f6kefgask6c1c76cpqhn0q49edlrh3m.apps.googleusercontent.com</string>
+    <string name="jeepney_codes">Mga Kodigo ng Dyip</string>
+    <string name="edit">I-edit</string>
+    <string name="confirm_password">Kumpirmahin ang Password</string>
+    <string name="my_account">Aking Account</string>
+    <string name="welcome_user">Maligayang Pagdating, User!</string>
+    <string name="destinations">Mga Destinasyon</string>
+    <string name="recent_routes">Mga Kamakailang Ruta</string>
+    <string name="edit_profile">I-edit ang Profile</string>
+    <string name="app_preferences">Mga Kagustuhan sa App</string>
+    <string name="help_amp_support"><![CDATA[Tulong at Suporta]]></string>
+    <string name="faq">Mga Madalas Itanong</string>
+    <string name="contact_support">MAKIPAG-UGNAYAN SA SUPORTA</string>
+    <string name="general">Pangkalahatan</string>
+    <string name="about_the_app">TUNGKOL SA APP</string>
+</resources>

@@ -22,7 +22,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/krona"
-            android:text="Jeepney Codes"
+            android:text="@string/jeepney_codes"
             android:textColor="@color/blue"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -32,6 +32,6 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:dividerHeight="2dp"
-            android:background="@android:color/white"/>
+            android:background="@color/white"/>
     </LinearLayout>
 </FrameLayout>

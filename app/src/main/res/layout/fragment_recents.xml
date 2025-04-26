@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="30dp"
     tools:context=".fragments.RecentsFragment">
 
     <LinearLayout
@@ -15,11 +15,11 @@
             android:id="@+id/textTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recent Routes"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/krona"
+            android:text="@string/recent_routes"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerRecentRoutes"

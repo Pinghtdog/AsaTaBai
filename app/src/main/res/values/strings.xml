@@ -16,7 +16,21 @@
     <string name="language_filipino">Filipino</string>
     <string name="language_cebuano">Cebuano</string>
     <string name="title_activity_maps">MapsActivity</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="default_web_client_id">656047469522-8f6kefgask6c1c76cpqhn0q49edlrh3m.apps.googleusercontent.com</string>
+    <string name="jeepney_codes">Jeepney Codes</string>
+    <string name="edit">Edit</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="my_account">My Account</string>
+    <string name="welcome_user">Welcome User!</string>
+    <string name="destinations">Destinations</string>
+    <string name="recent_routes">Recent Routes</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="app_preferences">App Preferences</string>
+    <string name="help_amp_support"><![CDATA[Help & Support]]></string>
+    <string name="faq">FAQ</string>
+    <string name="contact_support">CONTACT SUPPORT</string>
+    <string name="general">General</string>
+    <string name="about_the_app">ABOUT THE APP</string>
 </resources>

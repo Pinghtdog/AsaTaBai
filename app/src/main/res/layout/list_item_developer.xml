@@ -20,5 +20,6 @@
         android:fontFamily="@font/krona"
         android:justificationMode="inter_word"
         android:textSize="11sp"
-        android:layout_gravity="center_vertical"/>
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/black"/>
 </LinearLayout>
