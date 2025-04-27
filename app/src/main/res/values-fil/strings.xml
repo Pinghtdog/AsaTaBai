@@ -33,4 +33,6 @@
     <string name="contact_support">MAKIPAG-UGNAYAN SA SUPORTA</string>
     <string name="general">Pangkalahatan</string>
     <string name="about_the_app">TUNGKOL SA APP</string>
+    <string name="title_activity_landmark_map">LandmarkMapActivity</string>
+    <string name="landmarks">MGA LANDMARKS</string>
 </resources>

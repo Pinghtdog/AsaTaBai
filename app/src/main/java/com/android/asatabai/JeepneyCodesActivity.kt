@@ -25,11 +25,13 @@ class JeepneyCodesActivity : BaseActivity() {
                 }
                 appData.recentRoutes.add(selectedRoute)
             }
-
             val intent = Intent(this, MapsActivity::class.java).apply {
                 putExtra("JEEPNEY_CODE", selectedRoute.code)
                 putExtra("ROUTE_STOPS", ArrayList(selectedRoute.routeStops))
+                putExtra("LOCATION_STOPS", ArrayList(selectedRoute.locationStops))
+                putExtra("DESCRIPTIONS", ArrayList(selectedRoute.locationStopsDescription))
             }
+
             startActivity(intent)
         }
         recyclerView.adapter = adapter

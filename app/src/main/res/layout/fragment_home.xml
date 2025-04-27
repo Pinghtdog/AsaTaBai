@@ -93,7 +93,7 @@
             android:background="@drawable/greybtn"
             android:fontFamily="@font/krona"
             android:text="@string/jeepney_codes"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/eighty"
             app:layout_constraintStart_toStartOf="@+id/twenty"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -107,7 +107,7 @@
             android:background="@drawable/greybtn"
             android:fontFamily="@font/krona"
             android:text="@string/destinations"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/eighty"
             app:layout_constraintStart_toStartOf="@+id/twenty"
             app:layout_constraintTop_toBottomOf="@+id/btnJeepneyCodes" />

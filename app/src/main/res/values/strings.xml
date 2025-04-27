@@ -33,4 +33,6 @@
     <string name="contact_support">CONTACT SUPPORT</string>
     <string name="general">General</string>
     <string name="about_the_app">ABOUT THE APP</string>
+    <string name="title_activity_landmark_map">LandmarkMapActivity</string>
+    <string name="landmarks">LANDMARKS</string>
 </resources>

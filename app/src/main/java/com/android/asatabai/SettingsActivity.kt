@@ -5,12 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.app.AlertDialog
+import android.content.Context
 import android.widget.Switch
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.android.asatabai.utils.LocaleHelper
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Locale
+import androidx.core.content.edit
 
 class SettingsActivity : BaseActivity() {
 
@@ -42,7 +44,7 @@ class SettingsActivity : BaseActivity() {
                 .setTitle("FAQ")
                 .setMessage("Frequently Asked Questions:\n\n" +
                         "1. How do I use the app?\n" +
-                        "- On the landing page, select 'Destinations' to find locations and their corresponding destination codes.\n" +
+                        "- On the landing page, select 'DestinationsActivity' to find locations and their corresponding destination codes.\n" +
                         "- Select 'Jeepney Codes' to view available jeepney codes for different routes.\n\n" +
                         "2. Is this app free?\n" +
                         "- Yes, this app is completely free to use.\n\n" +
@@ -85,11 +87,16 @@ class SettingsActivity : BaseActivity() {
                     // Sign out from Firebase
                     auth.signOut()
 
+                    // Reset language to English
+                    LocaleHelper.setLocale(this, "en")
+                    val preferences = getSharedPreferences("APP_PREF", Context.MODE_PRIVATE)
+                    preferences.edit() { remove("Locale.Helper.Selected.Language") }
+
                     // Navigate to the Sign-in screen
                     val intent = Intent(this, LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
-                    finish() // Close current activity
+                    finish()
                 }
                 .setNegativeButton("No", null)
                 .show()

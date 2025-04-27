@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.android.asatabai.DestinationsActivity
 import com.android.asatabai.JeepneyCodesActivity
 import com.android.asatabai.LoginActivity
 import com.android.asatabai.R
@@ -62,7 +63,8 @@ class HomeFragment : Fragment() {
 
     private fun setupDestinationsButton(button: Button) {
         button.setOnClickListener {
-            Toast.makeText(requireContext(), "Destinations Clicked", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(requireContext(), DestinationsActivity::class.java))
+            //Toast.makeText(requireContext(), "DestinationsActivity Clicked", Toast.LENGTH_SHORT).show()
         }
     }
 

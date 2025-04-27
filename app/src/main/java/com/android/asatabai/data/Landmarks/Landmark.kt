@@ -1,5 +1,6 @@
 package com.android.asatabai.data.Landmarks
 
+import com.android.asatabai.R
 import com.google.android.gms.maps.model.LatLng
 
 // Data class to hold all information about a point of interest
@@ -9,5 +10,6 @@ data class Landmark(
     val latLng: LatLng,       // The geographic coordinates
     val shortDescription: String, // Text for the default marker snippet (optional)
     val detailedDescription: String, // Text for your custom info panel
-    val type: String? = null // Optional: Category like "landmark", "mall", "stop", etc.
+    val type: String? = null,// Optional: Category like "landmark", "mall", "stop", etc.
+    val photo: Int = R.drawable.map
 )

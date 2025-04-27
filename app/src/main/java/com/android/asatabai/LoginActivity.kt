@@ -1,5 +1,6 @@
 package com.android.asatabai
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -8,8 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 import com.android.asatabai.data.AppData
 import com.android.asatabai.data.JeepneyRoutes.JeepneyRoutesData
+import com.android.asatabai.utils.LocaleHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import androidx.core.content.edit
 
 class LoginActivity : BaseActivity() {
 
@@ -27,6 +30,11 @@ class LoginActivity : BaseActivity() {
         et_password = findViewById(R.id.editTextPassword)
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
+
+        LocaleHelper.setLocale(this, "en")
+
+        val preferences = getSharedPreferences("APP_PREF", Context.MODE_PRIVATE)
+        preferences.edit() { remove("Locale.Helper.Selected.Language") }
 
         val text_regis = findViewById<TextView>(R.id.signup)
 

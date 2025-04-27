@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,7 +14,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.android.asatabai.data.Landmarks.Landmark
-import com.android.asatabai.data.Landmarks.LandmarkData
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -28,17 +26,19 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
-import com.google.android.gms.maps.model.*
 
 class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClickListener, SensorEventListener {
 
     private lateinit var map: GoogleMap
     private lateinit var routeStops: List<LatLng>
+    private lateinit var locationStops: List<LatLng>
+    private lateinit var descriptions: List<String>
     private lateinit var infoPanel: LinearLayout
     private lateinit var infoTitle: TextView
     private lateinit var infoDescription: TextView
     private lateinit var compassView: ImageView
     private lateinit var centerButton: ImageView
+    private var lastClickedMarkerId: String? = null
 
     private lateinit var sensorManager: SensorManager
     private var accelerometer: Sensor? = null
@@ -66,6 +66,9 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
         // Get the selected jeepney code and route stops
         val jeepneyCode = intent.getStringExtra("JEEPNEY_CODE") ?: "01A"
         routeStops = intent.getParcelableArrayListExtra<LatLng>("ROUTE_STOPS") ?: emptyList()
+        locationStops = intent.getParcelableArrayListExtra<LatLng>("LOCATION_STOPS") ?: emptyList()
+        descriptions = intent.getStringArrayListExtra("DESCRIPTIONS") ?: arrayListOf()
+
 
         // Title
         supportActionBar?.title = "Jeepney $jeepneyCode Route"
@@ -132,9 +135,20 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
                     .width(8f)
                     .geodesic(true)
             )
-            val landmarks = LandmarkData.placesOfInterest
-            addPlacesToMap(landmarks)
+//            val landmarks = LandmarkData.placesOfInterest
+//            addPlacesToMap(landmarks)
 
+            if (locationStops.isNotEmpty()) {
+                for ((index, stop) in locationStops.withIndex()) {
+                    val marker = map.addMarker(
+                        MarkerOptions()
+                            .position(stop)
+                            .title("Location: ${(index + 'A'.code).toChar()}")
+                    )
+                    // Store the index in the marker's tag
+                    marker?.tag = index
+                }
+            }
             // Zoom to show the entire route
             val bounds = LatLngBounds.builder()
             routeStops.forEach { bounds.include(it) }
@@ -153,30 +167,36 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
 
 
         // --- Move camera to initial position ---
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(cebuCityHall, 14f)) // Zoom level 14
+        //map.moveCamera(CameraUpdateFactory.newLatLngZoom(cebuCityHall, 14f)) // Zoom level 14
         map.setOnCameraMoveListener {
             // Update compass rotation when map moves/rotates
             updateCompassRotation(map.cameraPosition.bearing)
         }
     }
 
-override fun onMarkerClick(marker: Marker): Boolean {
-    // ... (logic remains the same, retrieving Place from marker.tag)
-    Log.d("MapsActivity", "Marker clicked: ${marker.title}")
-    val landmark = marker.tag as? Landmark
-    if (landmark != null) {
-        Log.d("MapsActivity", "Retrieved Place data from tag: ${landmark.name}")
-        showInfoPanel(landmark.name, landmark.detailedDescription)
+    override fun onMarkerClick(marker: Marker): Boolean {
+        Log.d("MapsActivity", "Marker clicked: ${marker.title}")
+
+        // Hide if clicking the same marker again
+        if (marker.id == lastClickedMarkerId && infoPanel.visibility == View.VISIBLE) {
+            hideInfoPanel()
+            lastClickedMarkerId = null
+            return true
+        }
+
+        // Get the index we stored in the marker's tag
+        val index = marker.tag as? Int
+
+        if (index != null && index < descriptions.size) {
+            showInfoPanel(marker.title ?: "Location Point", descriptions[index])
+        } else {
+            showInfoPanel(marker.title ?: "Location Point", "No description available")
+        }
+
         map.animateCamera(CameraUpdateFactory.newLatLng(marker.position), 300, null)
-        return true
-    } else {
-        Log.w("MapsActivity", "Marker tag is not a valid Place object for ${marker.title}.")
-        // Fallback?
-        showInfoPanel(marker.title ?: "Unknown", marker.snippet ?: "No details")
-        map.animateCamera(CameraUpdateFactory.newLatLng(marker.position), 300, null)
+        lastClickedMarkerId = marker.id
         return true
     }
-}
 
 
     // --- Helper functions for the custom info panel ---
@@ -274,8 +294,5 @@ override fun onMarkerClick(marker: Marker): Boolean {
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         Log.d("MapsActivity", "Sensor accuracy changed: ${sensor?.name} to $accuracy")
     }
-
-
-
 
 }

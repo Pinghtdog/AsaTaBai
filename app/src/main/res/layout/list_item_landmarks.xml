@@ -1,0 +1,65 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ImageView for the landmark picture -->
+        <ImageView
+            android:id="@+id/landmarkImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/landmarkName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Landmark Name"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:fontFamily="@font/krona"
+            android:paddingTop="8dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/landmarkShortDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Short Description"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:paddingTop="4dp"
+            android:textColor="@color/black"/>
+
+        <!-- CheckBox and Button inside a horizontal LinearLayout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end|center_vertical"> <!-- Aligns all items to the right -->
+
+            <CheckBox
+                android:id="@+id/landmarkCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save to place"
+                android:paddingTop="8dp"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/viewMapButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Map"
+                android:layout_marginStart="20dp"/> <!-- Add some margin between the CheckBox and Button -->
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
