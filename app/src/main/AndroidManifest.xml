@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AsaTaBai"
         tools:targetApi="31">
-
+        <activity
+            android:name=".AccountsActivity"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -47,9 +49,6 @@
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="false" />
         <activity
             android:name=".JeepneyCodesActivity"
             android:exported="false" />

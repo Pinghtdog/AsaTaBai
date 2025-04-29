@@ -11,5 +11,5 @@ data class Landmark(
     val shortDescription: String, // Text for the default marker snippet (optional)
     val detailedDescription: String, // Text for your custom info panel
     val type: String? = null,// Optional: Category like "landmark", "mall", "stop", etc.
-    val photo: Int = R.drawable.map
+    val photo: Int = R.drawable.map,
 )

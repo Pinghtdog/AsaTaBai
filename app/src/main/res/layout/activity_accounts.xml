@@ -1,30 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AccountsFragment">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <!-- Username -->
 
         <!-- Email -->
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="154dp"
-            android:layout_height="143dp"
-            android:layout_marginTop="108dp"
-            android:src="@drawable/account"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="154dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="88dp"
+        android:src="@drawable/account"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+    <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +43,6 @@
             android:padding="10dp"
             android:textColorHint="@color/black"
             app:layout_constraintEnd_toStartOf="@id/guideline3"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/imageView1" />
 
@@ -69,20 +63,35 @@
             android:layout_marginTop="8dp" />
 
         <!-- Password -->
-        <EditText
-            android:id="@+id/editPassword"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:fontFamily="@font/krona"
-            android:textColorHint="@color/black"
-            android:background="@android:color/transparent"
-            app:layout_constraintTop_toBottomOf="@id/editEmail"
-            app:layout_constraintStart_toStartOf="@id/guideline"
-            app:layout_constraintEnd_toStartOf="@id/guideline3"
-            android:layout_marginTop="8dp" />
+    <EditText
+        android:id="@+id/currentPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/krona"
+        android:hint="CurrentPassword"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/editEmail" />
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/krona"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/currentPassword" />
 
         <!-- Save Button -->
 
@@ -115,25 +124,19 @@
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/gear"
-            app:layout_constraintBottom_toTopOf="@+id/imageView1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:background="@color/black"
+        android:id="@+id/imageView3"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/leftarrow"
+        app:layout_constraintBottom_toTopOf="@+id/imageView1"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/address"
-            app:layout_constraintBottom_toTopOf="@+id/imageView1"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
+    <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -148,4 +151,3 @@
             app:layout_constraintGuide_percent="0.88" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>

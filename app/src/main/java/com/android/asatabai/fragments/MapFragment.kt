@@ -41,7 +41,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
-        // Move camera to Cebu with padding
-        map.moveCamera(CameraUpdateFactory.newLatLngBounds(cebuBounds, 100))
+        // Move camera to Cebu City Hall with same zoom as MapsActivity (zoom = 15f)
+        val cebuCityHall = LatLng(10.2928, 123.9021)
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(cebuCityHall, 15f))
     }
 }

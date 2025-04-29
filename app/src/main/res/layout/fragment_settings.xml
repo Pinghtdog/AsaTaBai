@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragments.SettingsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:theme="@style/SCREEN">
+
+        <LinearLayout
+
+
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            style="@style/SCREEN"
+            android:paddingTop="30dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings"
+                style="@style/TEXT"
+                android:fontFamily="@font/krona"
+                android:textSize="30sp"
+                android:layout_marginBottom="30dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/editProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_profile"
+                android:textSize="16sp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/krona"
+                android:background="@drawable/rounded_button"/>
+            <!-- Night Mode Switch -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_preferences"
+                style="@style/TEXT"
+                android:textSize="20sp"
+                android:layout_marginBottom="20sp"
+                android:fontFamily="@font/krona"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:gravity="start">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="18"
+                    android:text="@string/night_mode"
+                    style="@style/TEXT"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/krona"
+                    />
+                <Switch
+                    android:id="@+id/night_mode_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+            </LinearLayout>
+
+            <!-- Language Selection -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="30dp"
+                android:gravity="start">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/language"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/krona"
+                    style="@style/TEXT"/>
+                <Spinner
+                    android:id="@+id/language_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TEXT"
+                    android:background="@color/white"
+                    />
+            </LinearLayout>
+
+            <!-- Divider -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/help_amp_support"
+                style="@style/TEXT"
+                android:textSize="20sp"
+                android:layout_marginBottom="20sp"
+                android:fontFamily="@font/krona"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/black"/>
+
+            <Button
+                android:id="@+id/faq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/faq"
+                android:textSize="16sp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/krona"
+                android:background="@drawable/rounded_button"/>
+
+            <Button
+                android:id="@+id/support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_support"
+                android:textSize="16sp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/krona"
+                android:background="@drawable/rounded_button"/>
+
+            <!-- Button for About Developers -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/general"
+                style="@style/TEXT"
+                android:textSize="20sp"
+                android:layout_marginBottom="20sp"
+                android:fontFamily="@font/krona"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/black"/>
+
+            <Button
+                android:id="@+id/btnApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_the_app"
+                android:textSize="16sp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/krona"
+                android:background="@drawable/rounded_button"/>
+            <Button
+                android:id="@+id/developer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_the_developers"
+                android:fontFamily="@font/krona"
+                android:textSize="16sp"
+                android:padding="10dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button">
+            </Button>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <Button
+                    android:id="@+id/logout"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/logouticon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginEnd="16dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

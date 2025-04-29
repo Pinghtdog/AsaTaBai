@@ -10,7 +10,7 @@
     <item android:title="Map"
         android:id="@+id/navbarMap"
         android:icon="@drawable/map"/>
-    <item android:title="Profile"
-        android:id="@+id/navbarProfile"
-        android:icon="@drawable/account"/>
+    <item android:title="Settings"
+        android:icon="@drawable/gear"
+        android:id="@+id/navbarSettings"/>
 </menu>

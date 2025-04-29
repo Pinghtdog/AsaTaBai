@@ -2,11 +2,10 @@ package com.android.asatabai
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.android.asatabai.fragments.AccountsFragment
 import com.android.asatabai.fragments.HomeFragment
 import com.android.asatabai.fragments.MapFragment
-
 import com.android.asatabai.fragments.RecentsFragment
+import com.android.asatabai.fragments.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class LandingPageActivity : BaseActivity() {
@@ -16,27 +15,37 @@ class LandingPageActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.landing)
 
-        val username = intent.getStringExtra("name")
+        val selectedFragment = intent?.getStringExtra("SELECTED_FRAGMENT")
 
         if (savedInstanceState == null) {
+            val initialFragment = when (selectedFragment) {
+                "SETTINGS" -> SettingsFragment()
+                else -> HomeFragment() // default fragment
+            }
+
             supportFragmentManager.beginTransaction()
-                .replace(
-                    R.id.frame,
-                    HomeFragment()
-                ) // Use replace and specify the container ID
+                .replace(R.id.frame, initialFragment)
                 .commit()
         }
 
         bottomNavView = findViewById(R.id.bottomNavigationView)
+
+        selectedFragment?.let {
+            val navItemId = when (it) {
+                "SETTINGS" -> R.id.navbarSettings
+                else -> R.id.navbarHome
+            }
+            bottomNavView.selectedItemId = navItemId
+        }
+
         bottomNavView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navbarHome -> {
                     replaceFragment(HomeFragment())
                     true
                 }
-
-                R.id.navbarProfile -> {
-                    replaceFragment(AccountsFragment())
+                R.id.navbarSettings -> {
+                    replaceFragment(SettingsFragment())
                     true
                 }
                 R.id.navbarSearch -> {
