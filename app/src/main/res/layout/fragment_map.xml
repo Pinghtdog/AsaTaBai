@@ -72,7 +72,8 @@
                 android:id="@+id/infoDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Detailed description of the place goes here." />
+                tools:text="Detailed description of the place goes here."
+                android:textColor="#FF000000"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

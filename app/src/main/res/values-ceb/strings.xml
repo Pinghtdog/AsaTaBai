@@ -24,7 +24,6 @@
     <string name="edit">Usba</string>
     <string name="confirm_password">Kumpirmaha ang Password</string>
     <string name="my_account">Akong Account</string>
-    <string name="welcome_user">Maayong Pag-abot, User!</string>
     <string name="destinations">Mga Destinasyon</string>
     <string name="recent_routes">Mga Bag-ong Ruta</string>
     <string name="edit_profile">Usba ang Profile</string>
@@ -36,4 +35,34 @@
     <string name="about_the_app">BAHÍN SA APP</string>
     <string name="title_activity_landmark_map">LandmarkMapActivity</string>
     <string name="landmarks">MGA LANDMARKS</string>
+    <string name="welcome_user">Maayong pag-abot, %1$s!</string>
+
+    <string name="ok">Sige</string>
+    <string name="yes">Oo</string>
+    <string name="no">Dili</string>
+
+    <string name="about_app_title">Mahitungod sa App</string>
+    <string name="about_app_message">
+        Ang app nagtanyag ug impormasyon kabahin sa mga ruta sa jeepney sa Cebu aron matabangan ang mga pasahero. Gipakita niini ang lain-laing mga ruta aron mas sayon ang biyahe sa mga lokal ug turista. Pagpabiling updated sa pinakabag-o nga mga kausaban sa ruta ug pagpangita sa labing sayon nga paingnan.
+    </string>
+
+    <string name="faq_title">Mga Pangutana</string>
+    <string name="faq_message"><![CDATA[
+        Kanunay nga Gipangutana:\n\n
+        1. Unsaon paggamit sa app?\n
+        - Sa landing page, pilia ang \'DestinationsActivity\' aron makita ang mga lugar ug ilang destination codes.\n
+        - Pilia ang \'Jeepney Codes\' aron makita ang mga code sa mga ruta.\n\n
+        2. Libre ba kini nga app?\n
+        - Oo, libre ra gyud kini gamiton.\n\n
+        3. Kanus-a i-update ang mga code?\n
+        - Kanunay namong gi-update ang mga code base sa kausaban sa sistema sa jeepney sa Cebu.
+    ]]></string>
+    <string name="support_title">Kontaka ang Suporta</string>
+    <string name="support_message">
+        Para sa tabang, kontaka mi pinaagi sa:\n\n📧 Email: gumaponraziff@gmail.com ug \n📞 Telepono: +63 963 739 9301
+    </string>
+
+    <string name="logout_title">Logout</string>
+    <string name="logout_message">Sigurado ka nga gusto nimo mag-logout?</string>
+    <string name="currentpassword">Karon nga Password</string>
 </resources>

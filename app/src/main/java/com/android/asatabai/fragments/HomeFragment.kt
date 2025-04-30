@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
 
     private fun displayWelcomeMessage(tvWelcome: TextView) {
         val username = (requireActivity().application as AppData).username
-        tvWelcome.text = "Welcome, $username!"
+        tvWelcome.text = getString(R.string.welcome_user, username)
     }
 
     private fun setupJeepneyCodesButton(button: Button) {

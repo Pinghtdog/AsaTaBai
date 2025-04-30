@@ -23,7 +23,6 @@
     <string name="edit">Edit</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="my_account">My Account</string>
-    <string name="welcome_user">Welcome User!</string>
     <string name="destinations">Destinations</string>
     <string name="recent_routes">Recent Routes</string>
     <string name="edit_profile">Edit Profile</string>
@@ -35,4 +34,42 @@
     <string name="about_the_app">ABOUT THE APP</string>
     <string name="title_activity_landmark_map">LandmarkMapActivity</string>
     <string name="landmarks">LANDMARKS</string>
+    <string name="welcome_user">Welcome, %1$s!</string>
+
+    <!-- General -->
+    <string name="ok">Ok</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- About the App -->
+    <string name="about_app_title">About The App</string>
+    <string name="about_app_message">
+    This app provides information about Cebu\'s jeepney routes, helping commuters navigate the city efficiently. It details different jeepney routes, making travel easier for locals and tourists. Stay updated with the latest route changes and find the best way to reach your destination.
+    </string>
+
+    <!-- FAQ -->
+    <string name="faq_title">FAQ</string>
+    <string name="faq_message"><![CDATA[
+Frequently Asked Questions:\n\n
+1. How do I use the app?\n
+ - On the landing page, select \'DestinationsActivity\' to find locations and their corresponding destination codes.\n
+ - Select \'Jeepney Codes\' to view available jeepney codes for different routes.\n\n
+2. Is this app free?\n
+ - Yes, this app is completely free to use.\n\n
+3. How often are the codes updated?\n
+ - We update the codes regularly to reflect any changes in Cebu\'s jeepney system.
+]]></string>
+<!--    <string name="faq_message">Hello</string>-->
+
+    <!-- Support -->
+    <string name="support_title">Contact Support</string>
+    <string name="support_message">
+        For support, please reach out to us via:\n\n📧 Email: gumaponraziff@gmail.com &amp; \n📞 Phone: +63 963 739 9301
+    </string>
+
+    <!-- Logout -->
+    <string name="logout_title">Logout</string>
+    <string name="logout_message">Are you sure you want to log out?</string>
+    <string name="currentpassword">CurrentPassword</string>
+
 </resources>

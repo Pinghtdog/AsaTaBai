@@ -23,7 +23,6 @@
     <string name="edit">I-edit</string>
     <string name="confirm_password">Kumpirmahin ang Password</string>
     <string name="my_account">Aking Account</string>
-    <string name="welcome_user">Maligayang Pagdating, User!</string>
     <string name="destinations">Mga Destinasyon</string>
     <string name="recent_routes">Mga Kamakailang Ruta</string>
     <string name="edit_profile">I-edit ang Profile</string>
@@ -35,4 +34,36 @@
     <string name="about_the_app">TUNGKOL SA APP</string>
     <string name="title_activity_landmark_map">LandmarkMapActivity</string>
     <string name="landmarks">MGA LANDMARKS</string>
+    <string name="welcome_user">Maligayang pagdating, %1$s!</string>
+
+    <string name="ok">Ok</string>
+    <string name="yes">Oo</string>
+    <string name="no">Hindi</string>
+
+    <string name="about_app_title">Tungkol sa App</string>
+    <string name="about_app_message">
+        Ang app na ito ay nagbibigay ng impormasyon tungkol sa mga ruta ng jeepney sa Cebu upang matulungan ang mga pasahero sa kanilang paglalakbay. Ipinapakita nito ang iba’t ibang ruta upang mapadali ang biyahe ng mga lokal at turista. Manatiling updated sa mga pagbabago sa ruta at hanapin ang pinakamadaling daan sa iyong destinasyon.
+    </string>
+
+    <string name="faq_title">Mga Tanong</string>
+    <string name="faq_message"><![CDATA[
+        Mga Madalas Itanong:\n\n
+        1. Paano gamitin ang app?\n
+        - Sa landing page, piliin ang \'DestinationsActivity\' para makita ang mga lokasyon at kanilang mga code.\n
+        - Piliin ang \'Jeepney Codes\' para makita ang mga code ng jeep sa iba\'t ibang ruta.\n\n
+        2. Libre ba ang app na ito?\n
+        - Oo, libre ito gamitin.\n\n
+        3. Gaano kadalas ina-update ang mga code?\n
+        - Regular kaming nag-a-update batay sa mga pagbabago sa sistema ng jeep sa Cebu.
+    ]]></string>
+
+    <string name="support_title">Kontakin ang Suporta</string>
+    <string name="support_message">
+        Para sa suporta, maaaring makipag-ugnayan sa amin:\n\n📧 Email: gumaponraziff@gmail.com at \n📞 Telepono: +63 963 739 9301
+    </string>
+
+    <string name="logout_title">Mag-logout</string>
+    <string name="logout_message">Sigurado ka bang gusto mong mag-logout?</string>
+    <string name="currentpassword">Kasalukuyang Password</string>
+
 </resources>

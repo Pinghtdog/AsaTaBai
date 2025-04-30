@@ -70,7 +70,7 @@
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/krona"
-        android:hint="CurrentPassword"
+        android:hint="@string/currentpassword"
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColorHint="@color/black"

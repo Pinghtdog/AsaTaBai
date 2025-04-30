@@ -2,11 +2,13 @@ package com.android.asatabai
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.asatabai.data.AppData
 import com.android.asatabai.data.JeepneyRoutes.JeepneyRoutesData
 import com.android.asatabai.data.JeepneyRoutes.RouteAdapter
+import com.google.firebase.firestore.FirebaseFirestore
 
 class JeepneyCodesActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

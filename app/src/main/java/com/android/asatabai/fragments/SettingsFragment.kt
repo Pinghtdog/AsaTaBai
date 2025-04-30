@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import com.android.asatabai.utils.LocaleHelper
 import com.google.firebase.auth.FirebaseAuth
@@ -18,10 +19,11 @@ import com.android.asatabai.BaseActivity
 import com.android.asatabai.DevelopersActivity
 import com.android.asatabai.LoginActivity
 import com.android.asatabai.R
+import com.android.asatabai.data.AppData
 
 class SettingsFragment : Fragment() {
 
-    private lateinit var switcher: Switch
+    private lateinit var switcher: SwitchCompat
     private lateinit var auth: FirebaseAuth
     private lateinit var languageSpinner: Spinner
 
@@ -41,11 +43,11 @@ class SettingsFragment : Fragment() {
         handleLogout(view)
         handleContact(view)
         handleFAQ(view)
-        handlEditProfile(view)
+        handleEditProfile(view)
         return view
     }
 
-    private fun handlEditProfile(view: View){
+    private fun handleEditProfile(view: View){
         val btnEditProfile = view.findViewById<Button>(R.id.editProfile)
         btnEditProfile.setOnClickListener {
             val intent = Intent(requireActivity(), AccountsActivity::class.java)
@@ -56,17 +58,8 @@ class SettingsFragment : Fragment() {
         val btnFAQ = view.findViewById<Button>(R.id.faq)
         btnFAQ.setOnClickListener {
             AlertDialog.Builder(requireContext())
-                .setTitle("FAQ")
-                .setMessage(
-                    "Frequently Asked Questions:\n\n" +
-                            "1. How do I use the app?\n" +
-                            "- On the landing page, select 'DestinationsActivity' to find locations and their corresponding destination codes.\n" +
-                            "- Select 'Jeepney Codes' to view available jeepney codes for different routes.\n\n" +
-                            "2. Is this app free?\n" +
-                            "- Yes, this app is completely free to use.\n\n" +
-                            "3. How often are the codes updated?\n" +
-                            "- We update the codes regularly to reflect any changes in Cebu's jeepney system."
-                )
+                .setTitle(getString(R.string.faq_title))
+                .setMessage(getString(R.string.faq_message))
                 .setPositiveButton("Ok", null)
                 .show()
         }
@@ -76,8 +69,8 @@ class SettingsFragment : Fragment() {
         val btnSupport = view.findViewById<Button>(R.id.support)
         btnSupport.setOnClickListener {
             AlertDialog.Builder(requireContext())
-                .setTitle("Contact Support")
-                .setMessage("For support, please reach out to us via:\n\n📧 Email: gumaponraziff@gmail.com & \n📞 Phone: +63 963 739 9301")
+                .setTitle(getString(R.string.support_title))
+                .setMessage(getString(R.string.support_message))
                 .setPositiveButton("Ok", null)
                 .show()
         }
@@ -87,8 +80,8 @@ class SettingsFragment : Fragment() {
         val btnApp = view.findViewById<Button>(R.id.btnApp)
         btnApp.setOnClickListener {
             AlertDialog.Builder(requireContext())
-                .setTitle("About The App")
-                .setMessage("This app provides information about Cebu's jeepney routes, helping commuters navigate the city efficiently. It details different jeepney routes, making travel easier for locals and tourists. Stay updated with the latest route changes and find the best way to reach your destination.")
+                .setTitle(getString(R.string.about_app_title))
+                .setMessage(getString(R.string.about_app_message))
                 .setPositiveButton("Ok", null)
                 .show()
         }
@@ -98,9 +91,9 @@ class SettingsFragment : Fragment() {
         val btnLogOut = view.findViewById<Button>(R.id.logout)
         btnLogOut.setOnClickListener {
             AlertDialog.Builder(requireContext())
-                .setTitle("Logout")
-                .setMessage("Are you sure you want to log out?")
-                .setPositiveButton("Yes") { _, _ ->
+                .setTitle(getString(R.string.logout_title))
+                .setMessage(getString(R.string.logout_message))
+                .setPositiveButton(getString(R.string.yes)) { _, _ ->
                     auth.signOut()
                     LocaleHelper.setLocale(requireContext(), "en")
                     val preferences = requireContext().getSharedPreferences("APP_PREF", Context.MODE_PRIVATE)
@@ -111,14 +104,14 @@ class SettingsFragment : Fragment() {
                     startActivity(intent)
                     requireActivity().finish()
                 }
-                .setNegativeButton("No", null)
+                .setNegativeButton(getString(R.string.no), null)
                 .show()
         }
     }
 
     private fun handleNightMode(view: View) {
         switcher = view.findViewById(R.id.night_mode_switch)
-        switcher.isChecked = (activity as? BaseActivity)?.nightMode ?: false
+        switcher.isChecked = (requireActivity().application as AppData).isNightMode
         switcher.setOnCheckedChangeListener { _, isChecked ->
             (activity as? BaseActivity)?.toggleNightMode(isChecked)
         }

@@ -11,7 +11,6 @@ import com.android.asatabai.utils.LocaleHelper
 open class BaseActivity : AppCompatActivity() {
     protected lateinit var sharedPreferences: SharedPreferences
     protected lateinit var editor: SharedPreferences.Editor
-    var nightMode: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +27,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun toggleNightMode(newState: Boolean) {
+        if(newState == (application as AppData).isNightMode) return
         AppCompatDelegate.setDefaultNightMode(
             if (newState) AppCompatDelegate.MODE_NIGHT_YES
             else AppCompatDelegate.MODE_NIGHT_NO
@@ -35,7 +35,6 @@ open class BaseActivity : AppCompatActivity() {
         editor = sharedPreferences.edit()
         editor.putBoolean("night", newState)
         editor.apply()
-
         (application as AppData).isNightMode = newState
     }
 }
