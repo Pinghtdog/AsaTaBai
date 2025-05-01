@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.asatabai.data.JeepneyRoutes.JeepneyRoutesData
 import com.android.asatabai.data.JeepneyRoutes.RouteAdapter
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class JeepneyCodesActivity : BaseActivity() {
@@ -18,7 +19,8 @@ class JeepneyCodesActivity : BaseActivity() {
 
         val adapter = RouteAdapter(JeepneyRoutesData.jeepneyRoutes) { selectedRoute ->
             val db = FirebaseFirestore.getInstance()
-            val recentRoutesRef = db.collection("recentRoutes")
+            val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return@RouteAdapter
+            val recentRoutesRef = db.collection("users").document(userId).collection("recentRoutes")
 
             val recentRouteData = hashMapOf(
                 "code" to selectedRoute.code,
