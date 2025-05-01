@@ -15,6 +15,7 @@ import com.android.asatabai.R
 import com.android.asatabai.data.JeepneyRoutes.JeepneyRoute
 import com.android.asatabai.data.JeepneyRoutes.RouteAdapter
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
@@ -40,7 +41,8 @@ class RecentsFragment : Fragment() {
         adapter = RouteAdapter(routeList) { selectedRoute ->
             // Handle route selection
             val db = FirebaseFirestore.getInstance()
-            val recentRoutesRef = db.collection("recentRoutes")
+            val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return@RouteAdapter
+            val recentRoutesRef = db.collection("users").document(userId).collection("recentRoutes")
 
             val recentRouteData = hashMapOf(
                 "code" to selectedRoute.code,
@@ -105,7 +107,9 @@ class RecentsFragment : Fragment() {
         progressBar.visibility = View.VISIBLE
 
         val db = FirebaseFirestore.getInstance()
-        db.collection("recentRoutes")
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+
+        db.collection("users").document(userId).collection("recentRoutes")
             .orderBy("timestamp", Query.Direction.DESCENDING)
             .limit(6)
             .get()

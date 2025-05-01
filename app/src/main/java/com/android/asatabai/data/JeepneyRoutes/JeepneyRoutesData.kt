@@ -166,13 +166,6 @@ object JeepneyRoutesData {
                 locationStopsDescription = listOf("Bulacao, Cebu City, Cebu, Philippines","16-18 Junquera St, Cebu City, 6000 Cebu, Philippines","23 Junquera St, Cebu City, 6000 Cebu, Philippines","Bulacao, Cebu City, Cebu, Philippines")
             ),
             JeepneyRoute(
-                code = "10G",
-                name = "Pardo - Magallanes",
-                routeStops = parseCoordinatesFromFile(context, "coordinates10g"),
-                locationStops = parseCoordinatesFromFile(context, "locationpoints10g"),
-                locationStopsDescription = listOf("Bulacao, Cebu City, Cebu, Philippines","16-18 Junquera St, Cebu City, 6000 Cebu, Philippines","23 Junquera St, Cebu City, 6000 Cebu, Philippines","Bulacao, Cebu City, Cebu, Philippines")
-            ),
-            JeepneyRoute(
                 code = "10H",
                 name = "Bulacao - SM",
                 routeStops = parseCoordinatesFromFile(context, "coordinates10h"),
