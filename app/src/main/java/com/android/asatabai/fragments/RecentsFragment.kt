@@ -23,6 +23,7 @@ class RecentsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RouteAdapter
     private lateinit var routeList: MutableList<JeepneyRoute>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,10 +34,55 @@ class RecentsFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         routeList = mutableListOf()
-        adapter = RouteAdapter(routeList){ selectedRoute->
+        adapter = RouteAdapter(routeList) { selectedRoute ->
+            val db = FirebaseFirestore.getInstance()
+            val recentRoutesRef = db.collection("recentRoutes")
+
+            val recentRouteData = hashMapOf(
+                "code" to selectedRoute.code,
+                "name" to selectedRoute.name,
+                "routeStops" to selectedRoute.routeStops.map { mapOf("latitude" to it.latitude, "longitude" to it.longitude) },
+                "locationStops" to selectedRoute.locationStops.map { mapOf("latitude" to it.latitude, "longitude" to it.longitude) },
+                "locationStopsDescription" to selectedRoute.locationStopsDescription,
+                "timestamp" to System.currentTimeMillis()
+            )
+
+            // Check if a document with the same code and name exists
+            recentRoutesRef
+                .whereEqualTo("code", selectedRoute.code)
+                .whereEqualTo("name", selectedRoute.name)
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    if (!querySnapshot.isEmpty) {
+                        // If exists, update timestamp
+                        for (document in querySnapshot.documents) {
+                            document.reference.update("timestamp", System.currentTimeMillis())
+                        }
+                    } else {
+                        // If not exists, add new
+                        recentRoutesRef.add(recentRouteData)
+                    }
+
+                    // After add/update, trim to keep only the 6 most recent
+                    recentRoutesRef
+                        .orderBy("timestamp")
+                        .get()
+                        .addOnSuccessListener { snapshot ->
+                            val excess = snapshot.size() - 6
+                            if (excess > 0) {
+                                val docsToDelete = snapshot.documents.take(excess)
+                                for (doc in docsToDelete) {
+                                    doc.reference.delete()
+                                }
+                            }
+                        }
+                }
+
             val intent = Intent(context, MapsActivity::class.java).apply {
                 putExtra("JEEPNEY_CODE", selectedRoute.code)
                 putExtra("ROUTE_STOPS", ArrayList(selectedRoute.routeStops))
+                putExtra("LOCATION_STOPS", ArrayList(selectedRoute.locationStops))
+                putExtra("DESCRIPTIONS", ArrayList(selectedRoute.locationStopsDescription))
             }
             startActivity(intent)
         }
@@ -50,7 +96,7 @@ class RecentsFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchRecentRoutesFromFirestore() {
         val db = FirebaseFirestore.getInstance()
-        db.collection("recentRoutes")  // Use recentRoutes collection instead of jeepneyRoutes
+        db.collection("recentRoutes")
             .orderBy("timestamp", Query.Direction.DESCENDING)
             .limit(6)
             .get()
@@ -79,5 +125,4 @@ class RecentsFragment : Fragment() {
                 Log.e("Firestore", "Error fetching recent routes", e)
             }
     }
-
 }
