@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:title="Home"
         android:id="@+id/navbarHome"
-        android:icon="@drawable/home"/>
+        android:icon="@drawable/h"
+        app:iconTint="@color/white"/>
+
     <item android:title="Recent"
         android:id="@+id/navbarSearch"
-        android:icon="@drawable/recent"/>
+        android:icon="@drawable/a"/>
     <item android:title="Map"
         android:id="@+id/navbarMap"
-        android:icon="@drawable/map"/>
+        android:icon="@drawable/m"/>
     <item android:title="Settings"
         android:icon="@drawable/gear"
         android:id="@+id/navbarSettings"/>

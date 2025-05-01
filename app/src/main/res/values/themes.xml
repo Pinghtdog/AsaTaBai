@@ -1,16 +1,33 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.AsaTaBai" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="android:colorBackground">@color/colorBackground</item> <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/colorOnError</item>
+        <item name="colorOutline">@color/colorOutline</item>
+
+        <item name="android:textColorPrimary">@color/colorOnBackground</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+
+
     </style>
 
     <style name="Theme.AsaTaBai" parent="Base.Theme.AsaTaBai" />
+
     <style name="SCREEN">
-        <item name="android:background">#FFFFFF</item>
-    </style>
+        <item name="android:background">@color/screenBackground</item> </style>
 
     <style name="TEXT">
-        <item name="android:textColor">#000000</item>
-    </style>
+        <item name="android:textColor">@color/textColor</item> </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color</item>
+        <item name="android:background">?attr/colorSurface</item> </style>
 
 </resources>

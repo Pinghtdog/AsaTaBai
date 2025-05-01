@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:padding="30dp"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="30dp">
     <!-- Logo at the top -->
 
     <!-- Username EditText -->
@@ -27,7 +27,13 @@
         android:fontFamily="@font/krona"
         android:text="Asa Ta Bai?"
         android:textColor="@color/black"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:text="Log In" />
 
     <EditText
         android:id="@+id/editTextUsername"
@@ -70,11 +76,11 @@
         android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="true"
         android:focusable="true"
         android:text="Don't have an account? Sign Up"
-        android:textSize="14sp"
         android:textColor="#0000FF"
-        android:layout_gravity="center"
-        android:clickable="true" />
+        android:textSize="14sp" />
 
 </LinearLayout>

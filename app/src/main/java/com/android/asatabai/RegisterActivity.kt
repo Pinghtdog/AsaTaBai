@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Locale
 
 class RegisterActivity : BaseActivity() {
 
@@ -27,13 +28,19 @@ class RegisterActivity : BaseActivity() {
         btn_register = findViewById(R.id.btnSignUp)
 
         btn_register.setOnClickListener {
-            val username = et_username.text.toString()
-            val email = et_email.text.toString()
-            val password = et_password.text.toString()
+            val username = et_username.text.toString().trim() // Trim whitespace
+            val email = et_email.text.toString().trim() // Trim whitespace
+            val password = et_password.text.toString().trim() // Trim whitespace
 
             if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             } else {
+                val capitalizedUsername = username.split(" ") // Split the username by spaces
+                    .joinToString(" ") { // Join the words back with spaces
+                        it.replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+                        }
+                    }
                 // Create user in Firebase Authentication
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
@@ -43,7 +50,7 @@ class RegisterActivity : BaseActivity() {
 
                             // Create a user data map to save to Firestore (without password)
                             val userMap = hashMapOf(
-                                "username" to username,
+                                "username" to capitalizedUsername, // Use the capitalized username
                                 "email" to email
                             )
 
@@ -57,9 +64,11 @@ class RegisterActivity : BaseActivity() {
                                             putExtra("name", email)
                                             putExtra("password", "")  // Don't pass password
                                         })
+                                        finish()
                                     }
                                     .addOnFailureListener { e ->
                                         Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                                        user.delete()
                                     }
                             }
                         } else {

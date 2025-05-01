@@ -23,13 +23,18 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
+        setContentView(R.layout.loginpage)
 
         JeepneyRoutesData.initialize(this)
         et_name = findViewById(R.id.editTextUsername)
         et_password = findViewById(R.id.editTextPassword)
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
+
+        if (auth.currentUser != null) {
+            autoLogin(auth.currentUser?.uid)
+            return
+        }
 
         LocaleHelper.setLocale(this, "en")
 
@@ -71,21 +76,106 @@ class LoginActivity : BaseActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val uid = auth.currentUser?.uid
-                    val firestore = FirebaseFirestore.getInstance()
+                    // User successfully signed in with Firebase Auth,
+                    // now fetch user data from Firestore and navigate
+                    fetchAndNavigateToLandingPage(uid)
 
-                    if (uid != null) {
-                        firestore.collection("users").document(uid).get()
-                            .addOnSuccessListener { document ->
-                                val username = document.getString("username") ?: "User"
-                                (application as AppData).username = username
-                                (application as AppData).email = email
-                                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this, LandingPageActivity::class.java))
-                            }
-                    }
                 } else {
-                    Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Login Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    // Optionally log the exception for debugging
+                    // task.exception?.printStackTrace()
                 }
+            }
+    }
+
+
+
+    private fun fetchAndNavigateToLandingPage(uid: String?) {
+        if (uid != null) {
+            // Make sure db is initialized before using it
+            db = FirebaseFirestore.getInstance() // Initialize db here if not already
+
+            db.collection("users").document(uid).get()
+                .addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        val username = document.getString("username") ?: "User"
+                        val email = document.getString("email") ?: auth.currentUser?.email
+                        ?: "" // Fetch email from Firestore or Auth
+                        (application as AppData).username = username
+                        (application as AppData).email = email
+                        Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, LandingPageActivity::class.java)
+                        // Add flags to clear the back stack so user can't go back to login
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        startActivity(intent)
+                        finish() // Finish LoginActivity
+                    } else {
+                        // Handle case where user exists in Auth but not in Firestore (shouldn't happen if registration flow is correct)
+                        Toast.makeText(this, "User data not found.", Toast.LENGTH_SHORT).show()
+                        // Optionally sign out the user from Auth if their data is missing in Firestore
+                        auth.signOut()
+                        // You might want to stay on the login screen or guide the user to re-register
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(
+                        this,
+                        "Failed to fetch user data: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    // Handle the error - maybe sign out the user or stay on login
+                    auth.signOut()
+                    // Optionally log the exception
+                    // e.printStackTrace()
+                }
+        } else {
+            // Should not happen if auth.currentUser is checked before
+            Toast.makeText(this, "User not authenticated.", Toast.LENGTH_SHORT).show()
+            // Stay on login screen
+        }
+    }
+
+
+        private fun autoLogin(uid: String?) {
+            if (uid != null) {
+                db = FirebaseFirestore.getInstance()
+                db.collection("users").document(uid).get()
+                    .addOnSuccessListener { document ->
+                        if (document.exists()) {
+                            val username = document.getString("username") ?: "User"
+                            val email = document.getString("email") ?: auth.currentUser?.email
+                            ?: "" // Fetch email from Firestore or Auth
+                            (application as AppData).username = username
+                            (application as AppData).email = email
+                            Toast.makeText(this, "AutoLogin Successful", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, LandingPageActivity::class.java)
+                            // Add flags to clear the back stack so user can't go back to login
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            startActivity(intent)
+                            finish() // Finish LoginActivity
+                        } else {
+                            // Handle case where user exists in Auth but not in Firestore (shouldn't happen if registration flow is correct)
+                            Toast.makeText(this, "User data not found.", Toast.LENGTH_SHORT).show()
+                            // Optionally sign out the user from Auth if their data is missing in Firestore
+                            auth.signOut()
+                            // You might want to stay on the login screen or guide the user to re-register
+                        }
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(
+                            this,
+                            "Failed to fetch user data: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        // Handle the error - maybe sign out the user or stay on login
+                        auth.signOut()
+                        // Optionally log the exception
+                        // e.printStackTrace()
+                    }
+            } else {
+                // Should not happen if auth.currentUser is checked before
+                Toast.makeText(this, "User not authenticated.", Toast.LENGTH_SHORT).show()
+                // Stay on login screen
             }
     }
 }
