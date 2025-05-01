@@ -23,6 +23,7 @@ class RecentsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RouteAdapter
     private lateinit var routeList: MutableList<JeepneyRoute>
+    private lateinit var progressBar: View  // The ProgressBar view
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +31,14 @@ class RecentsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_recents, container, false)
 
+        // Initialize views
         recyclerView = view.findViewById(R.id.recyclerRecentRoutes)
+        progressBar = view.findViewById(R.id.progressBar)  // Link to ProgressBar
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         routeList = mutableListOf()
         adapter = RouteAdapter(routeList) { selectedRoute ->
+            // Handle route selection
             val db = FirebaseFirestore.getInstance()
             val recentRoutesRef = db.collection("recentRoutes")
 
@@ -75,6 +79,7 @@ class RecentsFragment : Fragment() {
                                     doc.reference.delete()
                                 }
                             }
+                            fetchRecentRoutesFromFirestore()
                         }
                 }
 
@@ -88,6 +93,7 @@ class RecentsFragment : Fragment() {
         }
         recyclerView.adapter = adapter
 
+
         fetchRecentRoutesFromFirestore()
 
         return view
@@ -95,6 +101,9 @@ class RecentsFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun fetchRecentRoutesFromFirestore() {
+        // Show progress bar before fetching data
+        progressBar.visibility = View.VISIBLE
+
         val db = FirebaseFirestore.getInstance()
         db.collection("recentRoutes")
             .orderBy("timestamp", Query.Direction.DESCENDING)
@@ -120,9 +129,14 @@ class RecentsFragment : Fragment() {
                     routeList.add(route)
                 }
                 adapter.notifyDataSetChanged()
+
+                // Hide progress bar after data is fetched
+                progressBar.visibility = View.GONE
             }
             .addOnFailureListener { e ->
                 Log.e("Firestore", "Error fetching recent routes", e)
+                // Hide progress bar in case of error
+                progressBar.visibility = View.GONE
             }
     }
 }
