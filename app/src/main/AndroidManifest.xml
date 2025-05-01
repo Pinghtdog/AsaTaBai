@@ -66,8 +66,11 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/Theme.App.Starting"> <intent-filter>
+            android:theme="@style/Theme.AppCompat.NoActionBar"> <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
