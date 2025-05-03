@@ -30,21 +30,22 @@
         android:src="@drawable/compass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintHorizontal_bias="0.985"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/centerButton"
+        android:visibility="invisible"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/centerButton"
         android:layout_width="59dp"
         android:layout_height="59dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/focus"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/compass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintVertical_bias="0.678" />
 
     <LinearLayout
         android:id="@+id/infoPanel"
@@ -76,5 +77,15 @@
             android:layout_height="wrap_content"
             tools:text="Detailed description of the place goes here." />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/backbtnmapsActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.android.asatabai
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorManager
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
+import com.android.asatabai.fragments.HomeFragment
 
 class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClickListener, SensorEventListener {
 
@@ -37,6 +39,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
     private lateinit var infoTitle: TextView
     private lateinit var infoDescription: TextView
     private lateinit var compassView: ImageView
+    private lateinit var backbtn : ImageView
     private lateinit var centerButton: ImageView
     private var lastClickedMarkerId: String? = null
 
@@ -62,6 +65,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
         infoTitle = findViewById(R.id.infoTitle)
         infoDescription = findViewById(R.id.infoDescription)
         compassView = findViewById(R.id.compassView)
+        backbtn = findViewById(R.id.backbtnmapsActivity)
 
         // Get the selected jeepney code and route stops
         val jeepneyCode = intent.getStringExtra("JEEPNEY_CODE") ?: "01A"
@@ -87,6 +91,13 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
                 Toast.makeText(this, "Map not ready yet", Toast.LENGTH_SHORT).show()
             }
         }
+
+        backbtn.setOnClickListener{
+            val intent = Intent(this, HomeFragment::class.java);
+            startActivity(intent);
+        }
+
+
 
         // Sensors
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -135,9 +146,6 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
                     .width(8f)
                     .geodesic(true)
             )
-//            val landmarks = LandmarkData.placesOfInterest
-//            addPlacesToMap(landmarks)
-
             if (locationStops.isNotEmpty()) {
                 for ((index, stop) in locationStops.withIndex()) {
                     val marker = map.addMarker(

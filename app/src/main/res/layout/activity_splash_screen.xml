@@ -4,9 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary" > <ImageView
-    android:id="@+id/splash_jeepney_icon"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-    android:src="@drawable/jeep" /> </RelativeLayout>
+    android:background="@color/colorPrimary" >
+
+    <ImageView
+        android:id="@+id/splash_jeepney_icon"
+        android:layout_width="199dp"
+        android:layout_height="178dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginEnd="63dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/jeep" />
+
+
+</RelativeLayout>
