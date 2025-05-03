@@ -2,6 +2,7 @@ package com.android.asatabai
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.asatabai.data.JeepneyRoutes.JeepneyRoutesData
@@ -13,10 +14,17 @@ class JeepneyCodesActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jeepney_codes)
-
+        val backButton = findViewById<ImageView>(R.id.back)
+        backButton.setOnClickListener {
+            val intent = Intent(this, LandingPageActivity::class.java).apply {
+                putExtra("SELECTED_FRAGMENT", "HOME")
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
+            startActivity(intent)
+            finish()
+        }
         val recyclerView = findViewById<RecyclerView>(R.id.listViewJeepneyCodes)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
         val adapter = RouteAdapter(JeepneyRoutesData.jeepneyRoutes) { selectedRoute ->
             val db = FirebaseFirestore.getInstance()
             val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return@RouteAdapter

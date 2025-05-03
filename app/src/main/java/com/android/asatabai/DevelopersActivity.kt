@@ -5,14 +5,22 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ListView
 
 class DevelopersActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.developers)
-
-
+        val btnBack = findViewById<ImageView>(R.id.back)
+        btnBack.setOnClickListener {
+            val intent = Intent(this, LandingPageActivity::class.java).apply {
+                putExtra("SELECTED_FRAGMENT", "SETTINGS")
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
+            startActivity(intent)
+            finish()
+        }
         val developers = listOf(
             Developer(
                 "Raziff D. Gumapon",

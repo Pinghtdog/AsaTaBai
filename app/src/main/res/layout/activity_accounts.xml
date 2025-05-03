@@ -120,21 +120,22 @@
             android:layout_marginTop="32dp"
             android:fontFamily="@font/krona"
             android:text="@string/edit"
+            android:src="@drawable/back"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPassword" />
 
     <ImageView
-        android:background="@color/black"
-        android:id="@+id/imageView3"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:src="@drawable/leftarrow"
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
         app:layout_constraintBottom_toTopOf="@+id/imageView1"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/imageView1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        app:tint="@color/black" />
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

@@ -93,7 +93,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
         }
 
         backbtn.setOnClickListener{
-            val intent = Intent(this, HomeFragment::class.java);
+            val intent = Intent(this, JeepneyCodesActivity::class.java);
             startActivity(intent);
         }
 

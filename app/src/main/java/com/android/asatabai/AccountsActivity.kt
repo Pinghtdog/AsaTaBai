@@ -32,12 +32,11 @@ class AccountsActivity : BaseActivity() {
         editConfirmPassword = findViewById(R.id.editTextConfirmPassword)
         currentPassword = findViewById(R.id.currentPassword) // <- make sure this exists in your XML
         btnEdit = findViewById(R.id.btnSave)
-        btnBack = findViewById(R.id.imageView3)
+        btnBack = findViewById(R.id.back)
 
         appData = application as AppData
         editUsername.setText(appData.username)
         editEmail.setText(appData.email)
-
         btnEdit.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("Confirm Edit")

@@ -20,6 +20,7 @@ class LandingPageActivity : BaseActivity() {
         if (savedInstanceState == null) {
             val initialFragment = when (selectedFragment) {
                 "SETTINGS" -> SettingsFragment()
+                "HOME" -> HomeFragment()
                 else -> HomeFragment() // default fragment
             }
 
@@ -33,6 +34,7 @@ class LandingPageActivity : BaseActivity() {
         selectedFragment?.let {
             val navItemId = when (it) {
                 "SETTINGS" -> R.id.navbarSettings
+                "HOME" -> R.id.navbarHome
                 else -> R.id.navbarHome
             }
             bottomNavView.selectedItemId = navItemId

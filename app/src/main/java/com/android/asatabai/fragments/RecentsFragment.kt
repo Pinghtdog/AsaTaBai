@@ -35,6 +35,7 @@ class RecentsFragment : Fragment() {
         // Initialize views
         recyclerView = view.findViewById(R.id.recyclerRecentRoutes)
         progressBar = view.findViewById(R.id.progressBar)  // Link to ProgressBar
+
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         routeList = mutableListOf()
