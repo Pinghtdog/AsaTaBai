@@ -23,64 +23,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
-            android:id="@+id/compassViewfragment"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:contentDescription="compass"
-            android:src="@drawable/north"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.953"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/centerButtonfragment"
-            app:layout_constraintVertical_bias="0.15" />
 
-        <ImageView
-            android:id="@+id/centerButtonfragment"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/target"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.628" />
-
-
-
-        <LinearLayout
-            android:id="@+id/infoPanel"
-            android:layout_width="406dp"
-            android:layout_height="141dp"
-            android:layout_marginBottom="4dp"
-            android:background="#bde7ff"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:visibility="visible">
-
-            <TextView
-                android:id="@+id/infoTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FF000000"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:text="Place Title" />
-
-            <TextView
-                android:id="@+id/infoDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FF000000"
-                tools:text="Detailed description of the place goes here." />
-        </LinearLayout>
+            app:layout_constraintGuide_percent=".5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

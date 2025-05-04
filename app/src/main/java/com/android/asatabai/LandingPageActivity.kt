@@ -13,7 +13,7 @@ class LandingPageActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.landing)
+        setContentView(R.layout.fragment_landing)
 
         val selectedFragment = intent?.getStringExtra("SELECTED_FRAGMENT")
 

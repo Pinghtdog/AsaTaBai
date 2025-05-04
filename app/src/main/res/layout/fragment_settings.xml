@@ -164,8 +164,8 @@ android:layout_marginBottom="30dp"/>
 
             <ImageView
                 android:id="@+id/logout"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/logouticon"
                 android:layout_gravity="end"
                 android:layout_marginBottom="30dp"

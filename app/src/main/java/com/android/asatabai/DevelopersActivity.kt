@@ -37,52 +37,6 @@ class DevelopersActivity : BaseActivity() {
         val adapter = DeveloperAdapter(this, developers)
         findViewById<ListView>(R.id.developersListView).adapter = adapter
 
-        handleLandingPage()
-        handleLogout()
     }
 
-//    private fun handleDevelopers() {
-//        val listView: ListView = findViewById(R.id.developerListView)
-//        val developers = listOf(
-//            Developer(
-//                "Raziff D. Gumapon",
-//                "A passionate computer science student from the Philippines. Born on April 5, 2005, he is currently diving deep into programming. He has experience with C, C++, and Java.",
-//                R.drawable.raziff
-//            ),
-//            Developer(
-//                "Kelvin Pehrson P. Kierulf",
-//                "A dedicated computer science student focused on leveraging mobile technology to create smarter, more reliable commuting experiences for both drivers and passengers.",
-//                R.drawable.kp
-//            )
-//        )
-//
-//        val adapter = DeveloperAdapter(this, developers)
-//        listView.adapter = adapter
-//    }
-
-    private fun handleLandingPage() {
-        val btnHome = findViewById<Button>(R.id.home)
-        btnHome.setOnClickListener {
-            val intent = Intent(this, LandingPageActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-    private fun handleLogout() {
-        val btnLogOut = findViewById<Button>(R.id.logout)
-        btnLogOut.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setTitle("Logout")
-                .setMessage("Are you sure you want to log out?")
-                .setPositiveButton("Yes") { _, _ ->
-                    // Navigate to the Sign-in screen
-                    val intent = Intent(this, LoginActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
-                    finish() // Close current activity
-                }
-                .setNegativeButton("No", null)
-                .show()
-        }
-    }
 }
