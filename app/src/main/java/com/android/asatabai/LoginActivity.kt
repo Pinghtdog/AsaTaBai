@@ -8,13 +8,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.edit
-// Import installSplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.android.asatabai.data.AppData
 import com.android.asatabai.data.JeepneyRoutes.JeepneyRoutesData
 import com.android.asatabai.utils.LocaleHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.*
 
 class LoginActivity : BaseActivity() {
 
@@ -37,7 +37,15 @@ class LoginActivity : BaseActivity() {
 
         // 3. Keep the splash screen visible *only* if auto-login check is running
         splashScreen.setKeepOnScreenCondition { !isAutoLoginCheckComplete }
-        // --- End Splash Screen Setup ---
+
+        // --- Start Jeepney Routes Initialization in the background ---
+        CoroutineScope(Dispatchers.IO).launch {
+            JeepneyRoutesData.initialize(applicationContext) // Initialize in the background
+            withContext(Dispatchers.Main) {
+                // Update UI or flag on completion if necessary
+                isAutoLoginCheckComplete = true
+            }
+        }
 
         // Initialize Firebase Auth immediately
         auth = FirebaseAuth.getInstance()
@@ -61,7 +69,7 @@ class LoginActivity : BaseActivity() {
 
         // Initialize Firestore and other components needed for the login page
         db = FirebaseFirestore.getInstance()
-        JeepneyRoutesData.initialize(this) // Initialize this where appropriate
+
         et_name = findViewById(R.id.editTextUsername)
         et_password = findViewById(R.id.editTextPassword)
 
@@ -152,7 +160,6 @@ class LoginActivity : BaseActivity() {
             isAutoLoginCheckComplete = true
         }
     }
-
 
     private fun autoLogin(uid: String?) {
         // db should already be initialized before calling this
