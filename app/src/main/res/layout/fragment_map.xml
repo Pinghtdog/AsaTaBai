@@ -24,25 +24,26 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/compassView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:id="@+id/compassViewfragment"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:contentDescription="compass"
-            android:src="@drawable/compass"
+            android:src="@drawable/north"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.953"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/centerButton"
+            app:layout_constraintTop_toBottomOf="@+id/centerButtonfragment"
             app:layout_constraintVertical_bias="0.15" />
 
         <ImageView
-            android:id="@+id/centerButton"
-            android:layout_width="59dp"
-            android:layout_height="59dp"
+            android:id="@+id/centerButtonfragment"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/compass"
+            android:src="@drawable/target"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.628" />

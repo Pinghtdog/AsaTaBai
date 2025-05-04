@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/krona"
+        android:textColor="@color/black"
         android:text="@string/recent_routes"
         android:textSize="20sp"
         android:textStyle="bold"

@@ -43,9 +43,9 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
     private lateinit var centerButton: ImageView
     private var lastClickedMarkerId: String? = null
 
-    private lateinit var sensorManager: SensorManager
-    private var accelerometer: Sensor? = null
-    private var magnetometer: Sensor? = null
+//    private lateinit var sensorManager: SensorManager
+//    private var accelerometer: Sensor? = null
+//    private var magnetometer: Sensor? = null
     private var lastAccelerometer = FloatArray(3)
     private var lastMagnetometer = FloatArray(3)
     private var lastAccelerometerSet = false
@@ -60,11 +60,11 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
-        centerButton = findViewById(R.id.centerButton)
+        centerButton = findViewById(R.id.centerButtonactivity)
         infoPanel = findViewById(R.id.infoPanel)
         infoTitle = findViewById(R.id.infoTitle)
         infoDescription = findViewById(R.id.infoDescription)
-        compassView = findViewById(R.id.compassView)
+        compassView = findViewById(R.id.compassViewactivity)
         backbtn = findViewById(R.id.backbtnmapsActivity)
 
         // Get the selected jeepney code and route stops
@@ -93,21 +93,20 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
         }
 
         backbtn.setOnClickListener{
-            val intent = Intent(this, JeepneyCodesActivity::class.java);
-            startActivity(intent);
+            finish();
         }
 
 
 
         // Sensors
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
-        if (accelerometer == null || magnetometer == null) {
-            Toast.makeText(this, "Required sensors (Accelerometer or Magnetometer) not available.", Toast.LENGTH_LONG).show()
-            // Consider disabling compass functionality or hiding the view
-            compassView.visibility = View.GONE
-        }
+//        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+//        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+//        magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
+//        if (accelerometer == null || magnetometer == null) {
+//            Toast.makeText(this, "Required sensors (Accelerometer or Magnetometer) not available.", Toast.LENGTH_LONG).show()
+//            // Consider disabling compass functionality or hiding the view
+//            compassView.visibility = View.GONE
+//        }
 
         compassView.setOnClickListener {
             if (::map.isInitialized) {
@@ -234,24 +233,24 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback ,GoogleMap.OnMarkerClick
         marker?.tag = place
     }
 
-
-    override fun onResume() {
-        super.onResume()
-        // Register sensor listeners
-        if (accelerometer != null) {
-            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME) // Use SENSOR_DELAY_GAME or UI for responsiveness
-        }
-        if (magnetometer != null) {
-            sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_GAME)
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        // Unregister sensor listeners to save battery
-        sensorManager.unregisterListener(this, accelerometer)
-        sensorManager.unregisterListener(this, magnetometer)
-    }
+//
+//    override fun onResume() {
+//        super.onResume()
+//        // Register sensor listeners
+//        if (accelerometer != null) {
+//            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME) // Use SENSOR_DELAY_GAME or UI for responsiveness
+//        }
+//        if (magnetometer != null) {
+//            sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_GAME)
+//        }
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        // Unregister sensor listeners to save battery
+//        sensorManager.unregisterListener(this, accelerometer)
+//        sensorManager.unregisterListener(this, magnetometer)
+//    }
 
 
     override fun onSensorChanged(event: SensorEvent?) {

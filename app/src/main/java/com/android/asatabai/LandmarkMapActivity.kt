@@ -51,11 +51,11 @@ class LandmarkMapActivity : BaseActivity(), OnMapReadyCallback, GoogleMap.OnMark
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
-        centerButton = findViewById(R.id.centerButton)
+        centerButton = findViewById(R.id.centerButtonactivity)
         infoPanel = findViewById(R.id.infoPanel)
         infoTitle = findViewById(R.id.infoTitle)
         infoDescription = findViewById(R.id.infoDescription)
-        compassView = findViewById(R.id.compassView)
+        compassView = findViewById(R.id.compassViewactivity)
         backButton = findViewById(R.id.backbtnmapsActivity)
 
         // Get the landmark data from intent

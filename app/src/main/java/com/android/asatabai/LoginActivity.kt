@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.edit
+// Import installSplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.android.asatabai.data.AppData
 import com.android.asatabai.data.JeepneyRoutes.JeepneyRoutesData
@@ -28,14 +29,8 @@ class LoginActivity : BaseActivity() {
     private var isAutoLoginCheckComplete = true // Start as true (don't wait by default)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // --- Splash Screen Setup ---
-        // 1. Install the splash screen *first*
         val splashScreen = installSplashScreen()
-
-        // 2. Call super.onCreate() *after* installSplashScreen()
         super.onCreate(savedInstanceState)
-
-        // 3. Keep the splash screen visible *only* if auto-login check is running
         splashScreen.setKeepOnScreenCondition { !isAutoLoginCheckComplete }
 
         // --- Start Jeepney Routes Initialization in the background ---
@@ -47,19 +42,17 @@ class LoginActivity : BaseActivity() {
             }
         }
 
-        // Initialize Firebase Auth immediately
         auth = FirebaseAuth.getInstance()
 
         // Check if user is already logged in (auto-login scenario)
         val currentUser = auth.currentUser
+        db = FirebaseFirestore.getInstance()
         if (currentUser != null) {
             // Set flag to false: We need to wait for Firestore
             isAutoLoginCheckComplete = false
             // Initialize Firestore *before* calling autoLogin
-            db = FirebaseFirestore.getInstance()
+
             autoLogin(currentUser.uid)
-            // Return here: Don't set content view or initialize UI for login page
-            // as autoLogin will navigate away or handle failure.
             return
         }
 
@@ -68,6 +61,8 @@ class LoginActivity : BaseActivity() {
         setContentView(R.layout.loginpage)
 
         // Initialize Firestore and other components needed for the login page
+//        db = FirebaseFirestore.getInstance()
+        JeepneyRoutesData.initialize(this) // Initialize this where appropriate
         db = FirebaseFirestore.getInstance()
 
         et_name = findViewById(R.id.editTextUsername)
@@ -95,13 +90,6 @@ class LoginActivity : BaseActivity() {
         btn_login.setOnClickListener {
             doLogIn()
         }
-    }
-
-    // No changes needed in debugLogIn or doLogIn
-
-    private fun debugLogIn(){
-        startActivity(Intent(this, LandingPageActivity::class.java))
-        finish() // Add finish() so user can't go back to login
     }
 
     private fun doLogIn() {
@@ -161,6 +149,7 @@ class LoginActivity : BaseActivity() {
         }
     }
 
+
     private fun autoLogin(uid: String?) {
         // db should already be initialized before calling this
         if (uid != null) {
@@ -180,7 +169,7 @@ class LoginActivity : BaseActivity() {
                         startActivity(intent)
                         finish() // Finish LoginActivity
                     } else {
-                        Toast.makeText(this, "User data not found. Signing out.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "User data not found. Redirecting to Login.", Toast.LENGTH_SHORT).show()
                         auth.signOut()
                         // Stay on LoginActivity - need to show the login form now.
                         // Since we returned early in onCreate, we need to call setContentView etc.

@@ -1,37 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="30dp"
-    style="@style/SCREEN">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!-- Username EditText -->
 
     <ImageView
-        app:tint="@color/black"
         android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_gravity="left"
-        android:src="@drawable/back" />
-    <!-- Username EditText -->
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toTopOf="@+id/guideline73123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline73123" />
+
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
         android:fontFamily="@font/krona"
         android:text="DESTINATIONS"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline73123"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7213"
+        app:layout_constraintStart_toStartOf="@+id/guideline7213"
+        app:layout_constraintTop_toTopOf="@+id/guideline73123" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listviewlandmarks"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:padding="8dp" />
-</LinearLayout>
+        android:padding="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7213"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/guideline7213"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7213"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline73123"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
